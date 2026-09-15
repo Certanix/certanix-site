@@ -66,6 +66,10 @@ h3{font-family:Georgia,serif; font-size:19px; color:var(--ink); margin:0 0 8px; 
 p{margin:0 0 16px}
 p:last-child{margin-bottom:0}
 
+.pull{
+  font-family:Georgia,serif; font-size:clamp(20px,3.6vw,25px); font-style:italic;
+  color:var(--accent); margin:0 0 18px; line-height:1.35;
+}
 .callout{
   background:var(--panel); border-left:3px solid var(--rule);
   padding:20px 22px; margin:24px 0 0;
@@ -142,6 +146,20 @@ footer p{margin:0 0 8px}
     <h2>What Certanix does</h2>
     <p>Certanix produces that file as a machine-verifiable artifact instead: cryptographically signed pre-certification evidence about how a system behaved under adversarially selected test, which a recipient verifies offline, on their own machine, without trusting the manufacturer and without trusting us.</p>
     <div class="callout">Certanix produces pre-certification evidence. It does not certify, type-approve or authorise. Notified bodies, EASA and Member State authorities issue the decisions. Our artifact is the file they read.</div>
+  </section>
+
+  <section>
+    <h2>Where this applies</h2>
+    <p>The evidence pack, the offline verifier and the capability gate are independent of what is being tested. They describe results, the provenance of those results and the entitlement to assert them, not the machine that produced them. That is what makes this an infrastructure layer rather than a tool for one domain.</p>
+    <p>Tested end to end today on aerial and ground vehicle classes, with further classes ingested. The same layer applies to any system that ships software into a safety-relevant role, and the roadmap follows the regimes rather than the hardware: autonomous and AI-enabled machinery first, then the wider set of products and operators whose obligations turn on the same question, which is whether this particular build behaves as claimed.</p>
+    <p>Where a system class is not yet registered as validated, the platform produces no artifact asserting a result for it. The boundary between what has been demonstrated and what has not is enforced in the product, not promised in a document.</p>
+  </section>
+
+  <section>
+    <h2>Two parties, one file</h2>
+    <p class="pull">Verify before you deploy.</p>
+    <p>An operator accepting a software update to a safety-relevant system has traditionally had one thing to go on: the supplier's assurance that the new build will not break anything. A signed evidence pack replaces that assurance with something the operator checks on their own machine, offline, before the build goes into service.</p>
+    <p>So the same file serves two parties. The manufacturer produces it; the authority, the purchaser or the operator verifies it. Neither has to trust the other, and neither has to trust us. When a purchaser writes offline-verifiable evidence into a specification, the requirement travels down the supply chain without anyone having to sell it there.</p>
   </section>
 
   <section>
