@@ -7,122 +7,155 @@
 <meta name="description" content="Certanix produces cryptographically signed pre-certification evidence for European autonomous and AI-enabled systems, verifiable offline by the recipient.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://certanix.eu/">
+<meta name="theme-color" content="#0A0A0A">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Certanix">
 <meta property="og:site_name" content="Certanix">
 <meta property="og:url" content="https://certanix.eu/">
 <meta property="og:description" content="Sovereign pre-certification evidence for European autonomous and AI-enabled systems. Signed, and verifiable offline by the recipient.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' fill='%23C9A227' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Cpath d='M 18 52 L 18 14 L 46 14 L 46 52' stroke='%23FFFFFF' stroke-width='6' fill='none' stroke-linecap='square'/%3E%3Crect x='24' y='40' width='14' height='5' fill='%23F5C518'/%3E%3C/svg%3E">
 <style>
 :root{
-  --ink:#0A0A0A; --body:#22201E; --muted:#6E6E6E; --rule:#C9A227;
-  --accent:#B4553A; --paper:#FBFAF7; --panel:#F3F0EA; --hair:#DED8CC;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ink:#F5F2EC; --body:#DCD7CE; --muted:#9A948A; --rule:#C9A227;
-    --accent:#E08867; --paper:#111110; --panel:#1B1A18; --hair:#302E2A;
-  }
-}
-:root[data-theme="dark"]{
-  --ink:#F5F2EC; --body:#DCD7CE; --muted:#9A948A; --rule:#C9A227;
-  --accent:#E08867; --paper:#111110; --panel:#1B1A18; --hair:#302E2A;
+  --ink:#0A0A0A;        /* brand near-black ground */
+  --paper:#0A0A0A;
+  --panel:#141412;
+  --hair:#26261F;
+  --white:#FFFFFF;
+  --body:#D4D4D0;
+  --muted:#A3A3A3;
+  --micro:#737373;
+  --signal:#F5C518;     /* brand signal yellow */
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%; background:var(--paper)}
 body{
   margin:0; background:var(--paper); color:var(--body);
-  font-family:"Calibri","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-  font-size:17px; line-height:1.62; letter-spacing:.005em;
+  font-family:"Helvetica Neue",Helvetica,Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16.5px; line-height:1.66; font-weight:400;
+  -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:720px; margin:0 auto; padding:0 20px}
-a{color:var(--accent); text-underline-offset:3px; text-decoration-thickness:1px}
-a:hover{color:var(--ink)}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--signal); text-decoration:none; border-bottom:1px solid rgba(245,197,24,.35); padding-bottom:1px}
+a:hover{border-bottom-color:var(--signal)}
 
-header{padding-block:72px 0}
-.mark{
-  font-family:Georgia,"Times New Roman",serif; font-weight:700;
-  font-size:clamp(34px,7vw,50px); letter-spacing:.14em; color:var(--ink);
-  margin:0; line-height:1.05;
+/* ---- the registry frame: the brand's signature rule with corner ticks ---- */
+.registry{position:relative; height:1px; background:var(--signal); margin:0}
+.registry::before,.registry::after{
+  content:""; position:absolute; top:0; width:1px; height:22px; background:var(--signal);
 }
+.registry::before{left:0}
+.registry::after{right:0}
+.registry.bottom::before,.registry.bottom::after{top:auto; bottom:0}
+
+/* ---- header lockup ---- */
+header{padding-block:56px 0}
+.lockup{display:flex; align-items:flex-start; gap:26px; margin-top:34px}
+.mark{flex:0 0 auto; height:112px; width:auto; display:block}
+.mark .frame{stroke:var(--white)}
+.mark .latch{fill:var(--signal)}
+.mark .tick{stroke:var(--white)}
+.wordmark{
+  margin:0; font-size:clamp(34px,7.2vw,54px); font-weight:800; letter-spacing:.11em;
+  color:var(--white); line-height:1; padding-top:4px;
+}
+.wordmark .x{color:var(--signal)}
+.underrule{width:96px; height:3px; background:var(--signal); margin:16px 0 0}
 .motto{
-  margin:14px 0 0; font-family:Georgia,serif; font-style:italic;
-  font-size:clamp(15px,2.6vw,17px); letter-spacing:.24em; text-transform:uppercase;
-  color:var(--accent);
+  margin:16px 0 0; font-size:clamp(12px,2.2vw,14px); font-weight:600;
+  letter-spacing:.3em; text-transform:uppercase; color:var(--muted);
+}
+.credentials{
+  margin:10px 0 0; font-size:11.5px; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--micro);
 }
 .lede{
-  margin:26px 0 0; font-family:Georgia,serif; font-size:clamp(19px,3.4vw,23px);
-  line-height:1.5; color:var(--ink);
+  margin:34px 0 0; font-size:clamp(18px,3.2vw,21.5px); line-height:1.56;
+  color:var(--white); font-weight:400; max-width:60ch;
 }
-.goldrule{border:0; border-top:1.5px solid var(--rule); margin:40px 0 0}
 
-section{padding-block:40px}
+@media (max-width:480px){
+  .lockup{gap:18px}
+  .mark{height:88px}
+  .credentials{letter-spacing:.14em}
+}
+
+/* ---- sections ---- */
+section{padding-block:38px}
 section + section{border-top:1px solid var(--hair)}
 h2{
-  font-family:Georgia,serif; font-size:13px; font-weight:700; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--muted); margin:0 0 20px;
+  margin:0 0 22px; font-size:11.5px; font-weight:700; letter-spacing:.3em;
+  text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:12px;
 }
-h3{font-family:Georgia,serif; font-size:19px; color:var(--ink); margin:0 0 8px; font-weight:700}
-p{margin:0 0 16px}
+h2::before{content:""; width:18px; height:2px; background:var(--signal); flex:0 0 auto}
+h3{margin:0 0 7px; font-size:16.5px; font-weight:700; color:var(--white); letter-spacing:.01em}
+p{margin:0 0 17px; max-width:66ch}
 p:last-child{margin-bottom:0}
 
-.pull{
-  font-family:Georgia,serif; font-size:clamp(20px,3.6vw,25px); font-style:italic;
-  color:var(--accent); margin:0 0 18px; line-height:1.35;
-}
 .callout{
-  background:var(--panel); border-left:3px solid var(--rule);
-  padding:20px 22px; margin:24px 0 0;
-  font-family:Georgia,serif; font-size:16.5px; line-height:1.55; color:var(--ink);
+  background:var(--panel); border-left:2px solid var(--signal);
+  padding:20px 24px; margin:26px 0 0; color:var(--white); font-size:16px; max-width:none;
+}
+.pull{
+  font-size:clamp(22px,4.4vw,30px); font-weight:700; letter-spacing:.01em;
+  color:var(--signal); margin:0 0 20px; line-height:1.24; max-width:none;
 }
 
 ul.facts{list-style:none; margin:0; padding:0}
-ul.facts li{padding:18px 0; border-top:1px solid var(--hair)}
+ul.facts li{padding:20px 0; border-top:1px solid var(--hair)}
 ul.facts li:first-child{border-top:0; padding-top:0}
-ul.facts .t{
-  display:block; font-family:Georgia,serif; font-weight:700; color:var(--ink);
-  font-size:16.5px; margin-bottom:5px;
-}
-ul.facts .d{display:block; color:var(--body)}
+ul.facts .t{display:block; font-weight:700; color:var(--white); font-size:16.5px; margin-bottom:6px}
+ul.facts .d{display:block; max-width:66ch}
 
 .mono{
   font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-  font-size:12.5px; letter-spacing:.02em; line-height:1.75; color:var(--ink);
-  background:var(--panel); border:1px solid var(--hair); border-radius:3px;
-  padding:12px 14px; margin-top:10px; overflow-x:auto; white-space:pre-wrap; word-break:break-all;
+  font-size:12px; letter-spacing:.04em; line-height:1.85; color:var(--signal);
+  background:var(--panel); border:1px solid var(--hair);
+  padding:13px 15px; margin-top:12px; overflow-x:auto; white-space:pre-wrap; word-break:break-all;
 }
 
-dl.clock{margin:0; display:grid; grid-template-columns:auto 1fr; gap:0 26px}
+dl.clock{margin:0; display:grid; grid-template-columns:auto 1fr; gap:0 30px}
 dl.clock dt{
-  font-family:Georgia,serif; font-weight:700; color:var(--accent);
-  font-size:15px; white-space:nowrap; padding:14px 0 14px; border-top:1px solid var(--hair);
+  font-weight:700; color:var(--signal); font-size:13px; letter-spacing:.11em;
+  text-transform:uppercase; white-space:nowrap; padding:15px 0; border-top:1px solid var(--hair);
 }
-dl.clock dd{margin:0; padding:14px 0; border-top:1px solid var(--hair)}
+dl.clock dd{margin:0; padding:15px 0; border-top:1px solid var(--hair); max-width:60ch}
 dl.clock dt:first-of-type, dl.clock dt:first-of-type + dd{border-top:0; padding-top:0}
-@media (max-width:560px){
+@media (max-width:580px){
   dl.clock{grid-template-columns:1fr; gap:0}
-  dl.clock dt{padding-bottom:2px; border-top:1px solid var(--hair)}
+  dl.clock dt{padding-bottom:3px; border-top:1px solid var(--hair)}
   dl.clock dd{padding-top:0; border-top:0}
   dl.clock dt:first-of-type + dd{padding-top:0}
 }
 
 ul.people{list-style:none; margin:0; padding:0}
-ul.people li{padding:12px 0; border-top:1px solid var(--hair)}
+ul.people li{padding:13px 0; border-top:1px solid var(--hair)}
 ul.people li:first-child{border-top:0; padding-top:0}
-ul.people .n{font-family:Georgia,serif; font-weight:700; color:var(--ink); font-size:16.5px}
-ul.people .r{display:block; color:var(--muted); font-size:15.5px}
+ul.people .n{font-weight:700; color:var(--white); font-size:16.5px}
+ul.people .r{display:block; color:var(--muted); font-size:15px; margin-top:2px}
 
-ul.plain{margin:0; padding-left:20px}
-ul.plain li{margin-bottom:12px}
+ul.plain{margin:0; padding:0; list-style:none}
+ul.plain li{position:relative; padding-left:22px; margin-bottom:14px; max-width:66ch}
+ul.plain li::before{
+  content:""; position:absolute; left:0; top:11px; width:10px; height:2px; background:var(--signal);
+}
 ul.plain li:last-child{margin-bottom:0}
 
-.contact a{font-family:Georgia,serif; font-size:21px; font-weight:700}
+.contact a{font-size:21px; font-weight:700; letter-spacing:.01em}
 
-footer{
-  border-top:1.5px solid var(--rule); margin-top:8px;
-  padding-block:26px 56px; color:var(--muted); font-size:14px; line-height:1.6;
+footer{padding-block:24px 60px; color:var(--micro); font-size:13px; line-height:1.65}
+footer p{margin:0 0 7px; max-width:none}
+
+/* ---- print: invert to the light logo treatment ---- */
+@media print{
+  :root{--paper:#FFF; --panel:#F4F4F1; --hair:#D8D8D2; --white:#0A0A0A; --body:#1C1C1A; --muted:#555; --micro:#777}
+  body{font-size:10.5pt}
+  .mark .frame,.mark .tick{stroke:#0A0A0A}
+  a{color:#0A0A0A; border-bottom:0}
+  .pull{color:#0A0A0A}
+  .mono{color:#0A0A0A}
+  dl.clock dt{color:#0A0A0A}
+  section{break-inside:avoid}
 }
-footer p{margin:0 0 8px}
 </style>
 </head>
 <body>
@@ -130,10 +163,23 @@ footer p{margin:0 0 8px}
 <div class="wrap">
 
   <header>
-    <h1 class="mark">CERTANIX</h1>
-    <p class="motto">Trust, engineered.</p>
+    <div class="registry"></div>
+
+    <div class="lockup">
+      <svg class="mark" viewBox="-10 -22 157 258" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Certanix mark">
+        <path class="frame" d="M 0 220 L 0 0 L 130 0 L 130 220" stroke-width="14" stroke-linecap="square" fill="none"/>
+        <rect class="latch" x="30" y="156" width="70" height="12"/>
+        <line class="tick" x1="65" y1="-10" x2="65" y2="0" stroke-width="2"/>
+      </svg>
+      <div>
+        <h1 class="wordmark">CERTANI<span class="x">X</span></h1>
+        <div class="underrule"></div>
+        <p class="motto">Trust, engineered.</p>
+        <p class="credentials">Digital test range &middot; EU sovereign &middot; ITAR-free</p>
+      </div>
+    </div>
+
     <p class="lede">Sovereign pre-certification evidence for European autonomous and AI-enabled systems. Signed at production, and verifiable offline by whoever receives it.</p>
-    <hr class="goldrule">
   </header>
 
   <section>
@@ -200,17 +246,17 @@ footer p{margin:0 0 8px}
       <dt>2 Aug 2028</dt>
       <dd>The AI Act binds Annex I products carrying high-risk AI as a safety component, with duties reaching vehicles through sectoral law.</dd>
     </dl>
-    <p style="margin-top:20px">Manufacturers must therefore prepare evidence now, against requirements whose test matrices do not yet exist.</p>
+    <p style="margin-top:22px">Manufacturers must therefore prepare evidence now, against requirements whose test matrices do not yet exist.</p>
   </section>
 
   <section>
     <h2>Who</h2>
     <ul class="people">
       <li><span class="n">Axel Ferrazzini</span><span class="r">Founder and Chief Executive Officer</span></li>
-      <li><span class="n">Mircea Geoană</span><span class="r">Chairman-designate. Formerly Deputy Secretary General of NATO</span></li>
+      <li><span class="n">Mircea Geoan&#259;</span><span class="r">Chairman-designate. Formerly Deputy Secretary General of NATO</span></li>
       <li><span class="n">Ludovic Perret</span><span class="r">Senior Advisor, cryptography and post-quantum security</span></li>
-      <li><span class="n">Bruno Fédrici</span><span class="r">Advisor</span></li>
-      <li><span class="n">Geoffrey Le Gourriérec</span><span class="r">Advisor</span></li>
+      <li><span class="n">Bruno F&eacute;drici</span><span class="r">Advisor</span></li>
+      <li><span class="n">Geoffrey Le Gourri&eacute;rec</span><span class="r">Advisor</span></li>
     </ul>
   </section>
 
@@ -229,14 +275,14 @@ footer p{margin:0 0 8px}
     <p><a href="mailto:axel@certanix.eu">axel@certanix.eu</a></p>
   </section>
 
-</div>
+  <div class="registry bottom"></div>
 
-<footer>
-  <div class="wrap">
+  <footer>
     <p>Certanix is in formation. This site is published by GovStrat SRL, Brussels, Belgium, on its behalf.</p>
     <p>Copyright 2026 GovStrat SRL. This page contains no confidential information.</p>
-  </div>
-</footer>
+  </footer>
+
+</div>
 
 </body>
 </html>
