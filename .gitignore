@@ -1,0 +1,4 @@
+# Scratch and verification output, never published
+dns-baseline.txt
+*.txt
+godaddy-zone-baseline.json

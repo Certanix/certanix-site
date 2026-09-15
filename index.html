@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certanix</title>
+<meta name="description" content="Certanix produces cryptographically signed pre-certification evidence for European autonomous and AI-enabled systems, verifiable offline by the recipient.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://certanix.eu/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Certanix">
+<meta property="og:site_name" content="Certanix">
+<meta property="og:url" content="https://certanix.eu/">
+<meta property="og:description" content="Sovereign pre-certification evidence for European autonomous and AI-enabled systems. Signed, and verifiable offline by the recipient.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' fill='%23C9A227' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0A0A0A; --body:#22201E; --muted:#6E6E6E; --rule:#C9A227;
+  --accent:#B4553A; --paper:#FBFAF7; --panel:#F3F0EA; --hair:#DED8CC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#F5F2EC; --body:#DCD7CE; --muted:#9A948A; --rule:#C9A227;
+    --accent:#E08867; --paper:#111110; --panel:#1B1A18; --hair:#302E2A;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#F5F2EC; --body:#DCD7CE; --muted:#9A948A; --rule:#C9A227;
+  --accent:#E08867; --paper:#111110; --panel:#1B1A18; --hair:#302E2A;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:"Calibri","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px; line-height:1.62; letter-spacing:.005em;
+}
+.wrap{max-width:720px; margin:0 auto; padding:0 20px}
+a{color:var(--accent); text-underline-offset:3px; text-decoration-thickness:1px}
+a:hover{color:var(--ink)}
+
+header{padding-block:72px 0}
+.mark{
+  font-family:Georgia,"Times New Roman",serif; font-weight:700;
+  font-size:clamp(34px,7vw,50px); letter-spacing:.14em; color:var(--ink);
+  margin:0; line-height:1.05;
+}
+.motto{
+  margin:14px 0 0; font-family:Georgia,serif; font-style:italic;
+  font-size:clamp(15px,2.6vw,17px); letter-spacing:.24em; text-transform:uppercase;
+  color:var(--accent);
+}
+.lede{
+  margin:26px 0 0; font-family:Georgia,serif; font-size:clamp(19px,3.4vw,23px);
+  line-height:1.5; color:var(--ink);
+}
+.goldrule{border:0; border-top:1.5px solid var(--rule); margin:40px 0 0}
+
+section{padding-block:40px}
+section + section{border-top:1px solid var(--hair)}
+h2{
+  font-family:Georgia,serif; font-size:13px; font-weight:700; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 20px;
+}
+h3{font-family:Georgia,serif; font-size:19px; color:var(--ink); margin:0 0 8px; font-weight:700}
+p{margin:0 0 16px}
+p:last-child{margin-bottom:0}
+
+.callout{
+  background:var(--panel); border-left:3px solid var(--rule);
+  padding:20px 22px; margin:24px 0 0;
+  font-family:Georgia,serif; font-size:16.5px; line-height:1.55; color:var(--ink);
+}
+
+ul.facts{list-style:none; margin:0; padding:0}
+ul.facts li{padding:18px 0; border-top:1px solid var(--hair)}
+ul.facts li:first-child{border-top:0; padding-top:0}
+ul.facts .t{
+  display:block; font-family:Georgia,serif; font-weight:700; color:var(--ink);
+  font-size:16.5px; margin-bottom:5px;
+}
+ul.facts .d{display:block; color:var(--body)}
+
+.mono{
+  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  font-size:12.5px; letter-spacing:.02em; line-height:1.75; color:var(--ink);
+  background:var(--panel); border:1px solid var(--hair); border-radius:3px;
+  padding:12px 14px; margin-top:10px; overflow-x:auto; white-space:pre-wrap; word-break:break-all;
+}
+
+dl.clock{margin:0; display:grid; grid-template-columns:auto 1fr; gap:0 26px}
+dl.clock dt{
+  font-family:Georgia,serif; font-weight:700; color:var(--accent);
+  font-size:15px; white-space:nowrap; padding:14px 0 14px; border-top:1px solid var(--hair);
+}
+dl.clock dd{margin:0; padding:14px 0; border-top:1px solid var(--hair)}
+dl.clock dt:first-of-type, dl.clock dt:first-of-type + dd{border-top:0; padding-top:0}
+@media (max-width:560px){
+  dl.clock{grid-template-columns:1fr; gap:0}
+  dl.clock dt{padding-bottom:2px; border-top:1px solid var(--hair)}
+  dl.clock dd{padding-top:0; border-top:0}
+  dl.clock dt:first-of-type + dd{padding-top:0}
+}
+
+ul.people{list-style:none; margin:0; padding:0}
+ul.people li{padding:12px 0; border-top:1px solid var(--hair)}
+ul.people li:first-child{border-top:0; padding-top:0}
+ul.people .n{font-family:Georgia,serif; font-weight:700; color:var(--ink); font-size:16.5px}
+ul.people .r{display:block; color:var(--muted); font-size:15.5px}
+
+ul.plain{margin:0; padding-left:20px}
+ul.plain li{margin-bottom:12px}
+ul.plain li:last-child{margin-bottom:0}
+
+.contact a{font-family:Georgia,serif; font-size:21px; font-weight:700}
+
+footer{
+  border-top:1.5px solid var(--rule); margin-top:8px;
+  padding-block:26px 56px; color:var(--muted); font-size:14px; line-height:1.6;
+}
+footer p{margin:0 0 8px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <h1 class="mark">CERTANIX</h1>
+    <p class="motto">Trust, engineered.</p>
+    <p class="lede">Sovereign pre-certification evidence for European autonomous and AI-enabled systems. Signed at production, and verifiable offline by whoever receives it.</p>
+    <hr class="goldrule">
+  </header>
+
+  <section>
+    <h2>The problem</h2>
+    <p>European manufacturers of autonomous and AI-enabled systems can build machines that work. What they cannot do at the speed procurement now demands is prove to an authority or a purchaser that the machine behaves as claimed, in a form that party can check for itself.</p>
+    <p>That file is produced today by consultants, by hand, per programme, per variant, per software release. It is believed rather than verified, and it has to be rebuilt every time the software changes.</p>
+  </section>
+
+  <section>
+    <h2>What Certanix does</h2>
+    <p>Certanix produces that file as a machine-verifiable artifact instead: cryptographically signed pre-certification evidence about how a system behaved under adversarially selected test, which a recipient verifies offline, on their own machine, without trusting the manufacturer and without trusting us.</p>
+    <div class="callout">Certanix produces pre-certification evidence. It does not certify, type-approve or authorise. Notified bodies, EASA and Member State authorities issue the decisions. Our artifact is the file they read.</div>
+  </section>
+
+  <section>
+    <h2>What you can check rather than believe</h2>
+    <ul class="facts">
+      <li>
+        <span class="t">Verification is offline and producer-independent</span>
+        <span class="d">A recipient checks an evidence pack against a public key alone. No network, no contact with us, and no Certanix code on the trust path. One altered byte and the check fails.</span>
+      </li>
+      <li>
+        <span class="t">The signing root is hardware</span>
+        <span class="d">Evidence packs are signed by a YubiHSM 2 in FIPS mode, validated under NIST CMVP certificate 5302, with the device attestation chain verified through five links to the Yubico attestation root. Current signing key fingerprint, SHA-256 over the DER SPKI:</span>
+        <div class="mono">5849:0777:84FA:6061:6EA8:3E8B:FF35:C8B2:94E1:7631:A424:35CD:2019:2DD0:9D9F:9AE5</div>
+      </li>
+      <li>
+        <span class="t">Rotation signs forward, and history is never re-signed</span>
+        <span class="d">Artifacts signed before 4 September 2026 carry the superseded key and keep verifying against it. Re-signing an old record would re-date the estate and destroy the retention property that makes long-lived evidence worth holding. The key lineage is published, including its one recorded exception.</span>
+      </li>
+      <li>
+        <span class="t">Published schemas are immutable</span>
+        <span class="d">Every schema version a signed artifact references stays at its own permanent address, unchanged, for as long as the artifact exists. A correction is a new path, never an edit. The published vocabulary and schemas are open, at <a href="https://schema.certanix.eu/">schema.certanix.eu</a>.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Why now</h2>
+    <p>The regulatory clock is not a forecast. It is a set of dates that have already been set.</p>
+    <dl class="clock">
+      <dt>11 Sep 2026</dt>
+      <dd>The Cyber Resilience Act's reporting obligations become applicable. No harmonised standard supporting the Act has yet been cited in the Official Journal, so the presumption of conformity is unavailable and third-party assessment is the live route for important products.</dd>
+      <dt>20 Jan 2027</dt>
+      <dd>The Machinery Regulation applies.</dd>
+      <dt>2 Dec 2027</dt>
+      <dd>The AI Act binds Annex III systems.</dd>
+      <dt>2 Aug 2028</dt>
+      <dd>The AI Act binds Annex I products, with duties reaching vehicles through sectoral law.</dd>
+    </dl>
+    <p style="margin-top:20px">Manufacturers must therefore prepare evidence now, against requirements whose test matrices do not yet exist.</p>
+  </section>
+
+  <section>
+    <h2>Who</h2>
+    <ul class="people">
+      <li><span class="n">Axel Ferrazzini</span><span class="r">Founder and Chief Executive Officer</span></li>
+      <li><span class="n">Mircea Geoană</span><span class="r">Chairman-designate. Formerly Deputy Secretary General of NATO</span></li>
+      <li><span class="n">Ludovic Perret</span><span class="r">Senior Advisor, cryptography and post-quantum security</span></li>
+      <li><span class="n">Bruno Fédrici</span><span class="r">Advisor</span></li>
+      <li><span class="n">Geoffrey Le Gourriérec</span><span class="r">Advisor</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What we do not claim</h2>
+    <ul class="plain">
+      <li>No notified body has yet accepted a Certanix evidence pack. Obtaining that acceptance is a milestone, not a formality.</li>
+      <li>The platform carries no security certification today and we claim none. A proportionate qualification route is planned. It is not done.</li>
+      <li>Certanix is in formation. The intellectual property position is deliberately simple: one author, one assignment at incorporation.</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <p>For pilot enquiries, integration partnership, procurement collaboration or regulatory engagement:</p>
+    <p><a href="mailto:axel@certanix.eu">axel@certanix.eu</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Certanix is in formation. This site is published by GovStrat SRL, Brussels, Belgium, on its behalf.</p>
+    <p>Copyright 2026 GovStrat SRL. This page contains no confidential information.</p>
+  </div>
+</footer>
+
+</body>
+</html>
