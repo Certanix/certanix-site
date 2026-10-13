@@ -3,8 +3,8 @@
 A page that explains what verifying a Certanix evidence pack proves, gives the
 command-line steps, publishes the signing key, and verifies a pack in the browser.
 
-**Status: draft on branch `verify-page`. Not published.** Nothing here goes live until
-Axel approves it.
+**Status: live at https://certanix.eu/verify/ from 2026-10-13, on Axel's go.** Every
+change to this page, its wheel or its sample is again Axel's decision before it is pushed.
 
 ## Files
 
@@ -33,14 +33,14 @@ Axel approves it.
 What a content security policy cannot stop: the visitor themselves navigating away, and
 browser extensions, which run outside the page's policy.
 
-## Before this can go live
+## Go-live checklist
 
-Nothing here is pushed: certanix-site is a public repository, so even a branch would
-publish it. Axel gives the go.
+Done on 2026-10-13. certanix-site is a public repository: anything pushed, even a branch,
+is published.
 
 - [x] Counsel has reviewed and approved PATENTS-NOTICE.md (2026-10-13).
-- [ ] certanix-verify 0.14.0 released on PyPI. The `#prerelease` notice comes out then.
-- [ ] A link from the home page to `/verify/`.
+- [x] certanix-verify 0.14.0 released on PyPI (2026-10-13); the `#prerelease` notice removed.
+- [x] A link from the home page to `/verify/`.
 
 ## Changing the sample pack
 
