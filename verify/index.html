@@ -90,6 +90,7 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
   <section id="browser">
     <h2>Verify in this browser</h2>
     <p>This runs <code>certanix-verify</code>, the same Python code as the command-line tool, inside your browser through <a href="https://pyodide.org/">Pyodide</a>. Nothing about verification is reimplemented in JavaScript.</p>
+    <p>One dependency differs. The browser uses <code>cryptography</code> 47.0.0, the build Pyodide provides; the command-line tool pins <code>cryptography</code> 48.0.1. On every public test case of certanix-verify 0.14.0 (68 cases, each in JSON and in plain-text output), the browser and the command line gave identical results: the same exit code and the same output, byte for byte.</p>
     <div class="callout"><strong>Your file never leaves this browser.</strong> It is read from your disk into this page's memory and verified there. Once the verifier has loaded, the page makes no network connection of any kind: its content security policy forbids it, and the page checks that the browser enforces this before it accepts a file.</div>
 
     <div class="tool" id="tool">
@@ -154,6 +155,9 @@ openssl pkey -pubin -in certanix-hsm.pub -outform DER | openssl dgst -sha256</pr
 echo $?   <span class="c"># 0 = verified; any other value is the reason it did not</span></pre>
     <p class="small">Add <code>--json</code> for one machine-readable object. <code>certanix-verify --help</code> lists the other modes.</p>
 
+    <h3>Licence</h3>
+    <p>certanix-verify is released under the <a href="licence/LICENSE">BSD-3-Clause-Clear</a> licence. Who holds the copyright: <a href="licence/NOTICE">NOTICE</a>. Patents: <a href="licence/PATENTS-NOTICE.md">PATENTS-NOTICE</a> (draft, pending counsel review). The licence itself grants no patent rights.</p>
+
     <h3>Exit codes</h3>
     <p>The exit code is the reason, so a script can act on why a pack failed without reading text.</p>
     <table class="codes">
@@ -175,19 +179,19 @@ echo $?   <span class="c"># 0 = verified; any other value is the reason it did n
   </section>
 
   <!--
-    SAMPLE PACK: prepared, deliberately empty. Axel chooses the pack; any signing happens
-    only at cosign's own PIN prompt, entered by Axel. To publish one, place the file at
-    verify/sample/<name>.json and fill the four data-sample-* attributes below; app.mjs
-    then shows the section. Nothing else needs to change. See verify/README.md.
+    SAMPLE PACK: Axel's choice, 2026-10-13: the WP2 ALOHA robot-arm pack, signed on the
+    YubiHSM on 2026-10-04 (no new signature). To change it, replace the file in
+    verify/sample/ and the data-sample-* attributes below. See verify/README.md.
   -->
   <section id="sample" hidden
-           data-sample-href=""
-           data-sample-sha256=""
-           data-sample-schema=""
-           data-sample-description="">
+           data-sample-href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8.evidence-pack.json"
+           data-sample-sha256="5d605343ad74d6c64b5fca05ef7ff159be27260845d90ed190fdaf14c7d7d346"
+           data-sample-schema="1.12"
+           data-sample-description="A learned robot-arm policy (ACT, from LeRobot) on the ALOHA transfer-cube task, run in MuJoCo simulation: 8 selected scenarios, 5 passed and 3 failed. Signed with the Certanix signing key above. It is a sample of the format; it claims nothing about safety and maps to no regulation.">
     <h2>A sample pack</h2>
     <p id="sample-description"></p>
-    <p><a id="sample-link" href="#" download>Download the sample pack</a>, then verify it above or on the command line against the Certanix key.</p>
+    <p><a id="sample-link" href="#" download>Download the sample pack</a> (pack schema <span id="sample-schema"></span>), then verify it above or on the command line:</p>
+<pre id="sample-command"></pre>
     <span class="label">SHA-256 of the file</span>
     <div class="mono" id="sample-sha256"></div>
   </section>
@@ -196,7 +200,7 @@ echo $?   <span class="c"># 0 = verified; any other value is the reason it did n
 
   <footer>
     <p>Certanix is in formation. This site is published by GovStrat SRL, Brussels, Belgium, on its behalf.</p>
-    <p>The in-browser verifier runs Pyodide (Mozilla Public License 2.0) from this site. <a href="/">certanix.eu</a></p>
+    <p>certanix-verify: <a href="licence/LICENSE">BSD-3-Clause-Clear</a> &middot; <a href="licence/NOTICE">NOTICE</a> &middot; <a href="licence/PATENTS-NOTICE.md">PATENTS-NOTICE</a> (draft). The in-browser verifier runs Pyodide (Mozilla Public License 2.0) from this site. <a href="/">certanix.eu</a></p>
   </footer>
 
 </div>

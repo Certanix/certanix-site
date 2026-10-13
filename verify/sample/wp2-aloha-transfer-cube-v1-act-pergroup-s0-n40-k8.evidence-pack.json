@@ -1,0 +1,239 @@
+{
+  "@context": "https://schema.certanix.eu/v1/evidence-context.jsonld",
+  "@type": "EvidencePack",
+  "schemaVersion": "1.12",
+  "id": "evp:embodied:wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8:2026-10-02T20:35:51Z",
+  "subject": {
+    "tenant": "tenant-certanix-demo",
+    "device_manifest": "none",
+    "ai_policy_uri": "hf://lerobot/act_aloha_sim_transfer_cube_human@ba73b2766f1371cdc133ca4efb97eb090d744625",
+    "policy_hash": "sha256:42772891cb6eba1e7bc36ad8e12c0fa0723c61f036fa235c725ce6026e6e81df"
+  },
+  "campaign": {
+    "campaign_id": "wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8",
+    "scenarios_executed": 8,
+    "environments_per_scenario": 1,
+    "total_simulation_hours": 0.014316666666666667,
+    "assurance_target": null,
+    "scenario_pass_rate": 0.625,
+    "adversarial_robustness_score": null,
+    "tail_probability_estimate": null,
+    "explainability_coverage": null,
+    "dataset_diversity_score": null,
+    "dataset_diversity_uplift": null
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c021",
+      "name": "AlohaTransferCube-v0",
+      "status": "failed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 1.0,
+        "sim_time_s": 8.0,
+        "steps_executed": 400.0,
+        "task_reward_max": 0.0
+      },
+      "anomalies": [],
+      "seed": 21,
+      "deterministic_hash": "e7dff71713cd9d7fab8ce09232e7b2e33482d0b69c08d43a2c661406ba65d03b"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c027",
+      "name": "AlohaTransferCube-v0",
+      "status": "failed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 1.0,
+        "sim_time_s": 8.0,
+        "steps_executed": 400.0,
+        "task_reward_max": 0.0
+      },
+      "anomalies": [],
+      "seed": 27,
+      "deterministic_hash": "8dce5744e5d8d405f0a38a7a2b46b41daf313a50e5dcf490cb88c6199276d6c4"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c000",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.42,
+        "steps_executed": 271.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 0,
+      "deterministic_hash": "5d435e9cc1fca00f5728053bcc1014f23405b79f2b386fc390bf075a8fcbb096"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c011",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.88,
+        "steps_executed": 294.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 11,
+      "deterministic_hash": "9f86a5f94c3cb467be8331c22a30d4708edebf9db8c28d4e5d0892fd159ba7ca"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c020",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.74,
+        "steps_executed": 287.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 20,
+      "deterministic_hash": "c834eaca10b5804d223870eed1510f40b748b822cc7f5a3240c97afc8bd37a6a"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c031",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 3.0,
+        "sim_time_s": 4.68,
+        "steps_executed": 234.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 31,
+      "deterministic_hash": "3e2b864f7a822fc7509d92a9a2ea348c73efc0d61c34884de50b75b663a8cb40"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c023",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.82,
+        "steps_executed": 291.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 23,
+      "deterministic_hash": "fa131a692e26a5791f19138651738252a6616542c0c168052e1aeb637c7fdd68"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c034",
+      "name": "AlohaTransferCube-v0",
+      "status": "failed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 3.0,
+        "sim_time_s": 8.0,
+        "steps_executed": 400.0,
+        "task_reward_max": 1.0
+      },
+      "anomalies": [],
+      "seed": 34,
+      "deterministic_hash": "0641bdef96e0eedad8a3cc2d84cd5b7642e830ffc46e10bea9bb0198a2c5a721"
+    }
+  ],
+  "shap_records": [],
+  "compliance_mappings": {
+    "ai_act_annex_iv": {},
+    "easa_l2_ml": {},
+    "do_178c": null,
+    "annex_iv_clauses": [],
+    "cra_annex_i_clauses": []
+  },
+  "artefacts": [
+    {
+      "type": "embodied-trace",
+      "cid": "sha256:de8a66930f4c90f00805c65d67852a80dcd0b42cad83ebd2f65f14bc0af54012"
+    },
+    {
+      "type": "parameter-coverage-map",
+      "cid": "sha256:7f39a7762f7ffd504bdc529e89d3ab969f9e3d32c67ddf204c2828bd3d802668"
+    }
+  ],
+  "ingested_artifacts": [],
+  "provenance": {
+    "platform_version": "certanix-beta@296c6a9",
+    "ran_at": "2026-10-02T20:35:51Z",
+    "ran_on": null,
+    "component_versions": {
+      "mujoco": "3.3.6",
+      "dm_control": "1.0.34",
+      "gym-aloha": "0.1.4",
+      "gymnasium": "1.3.0",
+      "lerobot": "0.6.1",
+      "torch": "2.11.0",
+      "torchvision": "0.26.0",
+      "numpy": "2.2.6",
+      "PyOpenGL": "3.1.10",
+      "glfw": "2.10.2"
+    },
+    "quantum_job_ids": [],
+    "quantum_job_devices": [],
+    "quantum_beat": null,
+    "vehicle": null,
+    "selection_solver_class": null,
+    "platform_family": "macos-arm64",
+    "speed_fidelity": null,
+    "twin_fidelity": null,
+    "refusal_reason": null,
+    "harness": {
+      "harness_class": "sim-rigid-body-mujoco",
+      "provider": "mujoco",
+      "capabilities": [
+        "actuator_command",
+        "contact_pairs",
+        "joint_state",
+        "joint_velocity",
+        "object_pose",
+        "physical_interaction",
+        "rgb_camera"
+      ],
+      "pins_sha256": "953340914c496e69bc9514758aca2b1e3a396a0bd84de095391d6783a68af90d",
+      "pins_path": "tools/mujoco-pin.json"
+    },
+    "task": {
+      "task_id": "AlohaTransferCube-v0",
+      "env_package": "gym-aloha",
+      "env_revision": "gym-aloha 0.1.4, PyPI gym_aloha-0.1.4-py3-none-any.whl sha256 d9044290fbccddf0be4246b5287cf0eb6b9ddee545a3d222ce8d78c93ce7125e",
+      "success_definition": "gym_aloha/env.py AlohaEnv.step: `terminated = is_success = reward == 4`. gym_aloha/tasks/sim.py TransferCubeTask.get_reward, from contact pairs: 1 = cube touches the right gripper finger; 2 = and not the table (lifted); 3 = cube touches the left gripper finger (attempted transfer); 4 = left finger and not the table (successful transfer). max_reward = 4."
+    },
+    "policy": {
+      "policy_class": "policy-learned-deterministic",
+      "repo": "lerobot/act_aloha_sim_transfer_cube_human",
+      "revision": "ba73b2766f1371cdc133ca4efb97eb090d744625",
+      "weights_sha256": "42772891cb6eba1e7bc36ad8e12c0fa0723c61f036fa235c725ce6026e6e81df",
+      "loaded_weights_sha256": "aff8cfb701ae7e9e779784bb90d408c6f1fa1ea80c8d0604b6ee346ad8d8b7c0",
+      "derivation": "lerobot 0.6.1 `python -m lerobot.processor.migrate_policy_normalization --pretrained-path <original> --output-dir <migrated>`, run offline (HF_HUB_OFFLINE=1) on the published revision, which moves the normalisation statistics out of the weights into processor files; then the device fields in config.json and policy_preprocessor.json are set to \"cpu\", the device inference runs on. Without that second step the migration writes whatever accelerator the deriving host auto-selects in place of the published \"cuda\" (measured: \"mps\" on macos-arm64, \"cpu\" on linux-x86_64), so the derived files differed by platform",
+      "inference_device": "cpu",
+      "deterministic_algorithms": true,
+      "num_threads": 1
+    },
+    "renderer": {
+      "backend": "glfw",
+      "gl_vendor": "Apple",
+      "gl_renderer": "Apple M1 Max",
+      "gl_version": "2.1 Metal - 90.5",
+      "camera": "top",
+      "width": 640,
+      "height": 480
+    }
+  },
+  "signature": {
+    "algorithm": "ECDSA-P256",
+    "key_source": "yubihsm-hardware",
+    "signer_dn": null,
+    "signature_b64": "eyJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZGV2LnNpZ3N0b3JlLmJ1bmRsZS52MC4zK2pzb24iLCJ2ZXJpZmljYXRpb25NYXRlcmlhbCI6eyJwdWJsaWNLZXkiOnsiaGludCI6IldFa0hkNFQ2WUdGdXFENkwvelhJc3BUaGRqR2tKRFhOSUJrdDBKMmZtdVU9In0sInRsb2dFbnRyaWVzIjpbeyJsb2dJbmRleCI6IjMwNzc4OTQ1ODYiLCJsb2dJZCI6eyJrZXlJZCI6IndOSTlhdFFHbHorVldmTzZMUnlnSDRRVWZZLzhXNFJGd2lUNWk1V1JnQjA9In0sImtpbmRWZXJzaW9uIjp7ImtpbmQiOiJoYXNoZWRyZWtvcmQiLCJ2ZXJzaW9uIjoiMC4wLjEifSwiaW50ZWdyYXRlZFRpbWUiOiIxNzkxMTI2MDc5IiwiaW5jbHVzaW9uUHJvbWlzZSI6eyJzaWduZWRFbnRyeVRpbWVzdGFtcCI6Ik1FUUNJRytES3ZRL1M1eVg3SDcrV2RrUXZxMzZnM1RJdzFYOWFKa2FwZU1iY0Q5S0FpQlQrUDl4RmI4RDN2elM5VDRDNnJEcDl0Q0Yxdnp5TmJFdkZrSWw4d2Q3cGc9PSJ9LCJpbmNsdXNpb25Qcm9vZiI6eyJsb2dJbmRleCI6IjI5NTU5OTAzMjQiLCJyb290SGFzaCI6IktGMlZzRjRQbXYzZGdudElnLzlDWHZSQzJUQkp4VmR5VGY3QUU5NFRhQlU9IiwidHJlZVNpemUiOiIyOTU1OTkwMzI2IiwiaGFzaGVzIjpbImE4TzAzeUpoR3JxdFdEQTJwM1ZjQUpEanZiNUdUY3lYamxWWUFXLzd4QWM9IiwiVTBqNXV0MURlamo1My92OEJ3V25XSmZvT0dZaEVvZEsxRFNkYUVvUElwVT0iLCIvcHJEMWh0c2xyNFg3SXFOcDNJelVhT2w1eUZlMnJZdnZPTlNGdjdoVzZrPSIsIjRUOFB5RUw0MXUvVXFpODJqdjhaR0M1UkdSY1pOWmpsTUxvSkl0NURyY1k9IiwidWRNNVJpSGRjK2hyN1k3MkFQMFowNFJla1N2Ylc1Rk51YmZOY3EwdnVNQT0iLCJTc1VlcVMyZUxUMjV2VlN6dnRxdmNqYUY1U0tmWDZJSzVwUTFabVRRYUNrPSIsImgvWmV4eHdJQ1VpclIvU1ZKbnF5ZWVVQ3Q0cVpWZFhucUhOcFlGbGpra1U9IiwiUHlneUN2SW02bTdWLzJKRzRsc1dnRnZNazR2WEtacEE0ZWhuZTUwVDRZcz0iLCI1L0xScWYrTllZT3VMVVdCMWZ3SHZzU2ZoaDhBeFFKc1czNXZnWUY1Sk00PSIsImV6eVZtT0VhYVliVmEyTlp3T2trRXFjQzZuSWtjdVZKaHZFcW84Z1JpU0U9IiwiYnVmQ1dEaXc4ekY1TC9BU3plWTBhWUhQMUxrdVhYb2tLdFpkbUFMUGhCND0iLCJObE9jbGxkbUtQQTF0TUtJc2txSEF3dVFEWUhwMzFZd3BLK09PTXJNY2NjPSIsInF4ekhhbkF6ejU3U0RkbUplMEI3YkpLNzJOVElCYndFTUdCQkt2RE9ST3c9IiwieEgvRENzZUxIcjllS29ZVDhxc09SWks3elZkRUdZV0h1VnRzVnJEOTV3WT0iXSwiY2hlY2twb2ludCI6eyJlbnZlbG9wZSI6InJla29yLnNpZ3N0b3JlLmRldiAtIDExOTMwNTA5NTk5MTY2NTY1MDZcbjI5NTU5OTAzMjZcbktGMlZzRjRQbXYzZGdudElnLzlDWHZSQzJUQkp4VmR5VGY3QUU5NFRhQlU9XG5cbuKAlCByZWtvci5zaWdzdG9yZS5kZXYgd05JOWFqQkdBaUVBem1TakYyMEdvTVdwZzVtYzlyay9CRVg2Q0lSUUloMXBjeVdKL08yK3BHY0NJUUQxSDJIZ2Q5VjR2Y1FNUTBnSnlPZ21LOGRZdEVPR3crUi81TW52TExrdzhnPT1cbiJ9fSwiY2Fub25pY2FsaXplZEJvZHkiOiJleUpoY0dsV1pYSnphVzl1SWpvaU1DNHdMakVpTENKcmFXNWtJam9pYUdGemFHVmtjbVZyYjNKa0lpd2ljM0JsWXlJNmV5SmtZWFJoSWpwN0ltaGhjMmdpT25zaVlXeG5iM0pwZEdodElqb2ljMmhoTWpVMklpd2lkbUZzZFdVaU9pSTJNemc0WW1Kak16bGhPRFkwT1RneVpEUXhNRE13TnpSbFltUTVOV1V6Tm1Sak5URXlNVFkzWW1JNFptRmtZelF5TkdRNFlUQmpZMk5pTTJRMU1tSmtJbjE5TENKemFXZHVZWFIxY21VaU9uc2lZMjl1ZEdWdWRDSTZJazFGV1VOSlVVUkVWQ3RXTjA5cU0zbzRielV4VVhaaU5sTmphVmwyZUhaVlowTmFibWxzTjNkd1kweEJUWFF6VmxsUlNXaEJUVWxyYWxKRmRqaGphMHhPVjJ4UWJHUlplVVppVlc1cllsbG9MMFZSZFhKcWFHSjFVbWtyZEZkVGVpSXNJbkIxWW14cFkwdGxlU0k2ZXlKamIyNTBaVzUwSWpvaVRGTXdkRXhUTVVOU1ZXUktWR2xDVVZaVlNrMVRWVTFuVXpCV1dreFRNSFJNVXpCTFZGVmFjbVF3VmpOWFZXaE1ZakZ3U21WdGIzZFJNRVpTVjFWc1RHSXhjRXBsYlc5M1VrVkdVbGt3VWxKYU1FWkdaVVJCTlZkV1FreGhSRXAzVFcxV1dGWkdSa2hWVlZKUlpVVk9TMlJxUm01VWVrWXhXVkZ3Ums5RVRUVmxSVXA0VjJ4dk1Gb3dXakZpU0VWNFdWUktjRkV6UW0xbFJGbzFXakpKZUdWVlRreGxSM1JPVTIxa1NsRnJhRmxVYlZaT1RqQkdiMlZxUWxKVVYxcElUa1pDZWt3eVZqTlFWREJMVEZNd2RFeFRNVVpVYTFGblZVWldRMVJGYkVSSlJYUkdWMU13ZEV4VE1IUkRaejA5SW4xOWZYMD0ifV0sInRpbWVzdGFtcFZlcmlmaWNhdGlvbkRhdGEiOnsicmZjMzE2MVRpbWVzdGFtcHMiOlt7InNpZ25lZFRpbWVzdGFtcCI6Ik1JSUN5VEFEQWdFQU1JSUN3QVlKS29aSWh2Y05BUWNDb0lJQ3NUQ0NBcTBDQVFNeERUQUxCZ2xnaGtnQlpRTUVBZ0V3Z2JjR0N5cUdTSWIzRFFFSkVBRUVvSUduQklHa01JR2hBZ0VCQmdrckJnRUVBWU8vTUFJd01UQU5CZ2xnaGtnQlpRTUVBZ0VGQUFRZ2g1RkVud0tDcFVyS1EvZW1CTUZ5aWFGUTY0R1pMaDAzT3luMFVKbTMzTlFDRkU5N1NGT3lXYTZmL2lXQXZXUVM1K0JtZkNYbUdBOHlNREkyTVRBd05ERTFNREV4T1Zvd0F3SUJBYUF5cERBd0xqRVZNQk1HQTFVRUNoTU1jMmxuYzNSdmNtVXVaR1YyTVJVd0V3WURWUVFERXd4emFXZHpkRzl5WlMxMGMyR2dBREdDQWRzd2dnSFhBZ0VCTUZFd09URVZNQk1HQTFVRUNoTU1jMmxuYzNSdmNtVXVaR1YyTVNBd0hnWURWUVFERXhkemFXZHpkRzl5WlMxMGMyRXRjMlZzWm5OcFoyNWxaQUlVT2hOVUx3eVFZZTY4d1VNdnk0cU9peW9qaXd3d0N3WUpZSVpJQVdVREJBSUJvSUg4TUJvR0NTcUdTSWIzRFFFSkF6RU5CZ3NxaGtpRzl3MEJDUkFCQkRBY0Jna3Foa2lHOXcwQkNRVXhEeGNOTWpZeE1EQTBNVFV3TVRFNVdqQXZCZ2txaGtpRzl3MEJDUVF4SWdRZ3BnNXJLVG8yMGN4MFBXWjFzVXlPNjlwWmRxaFEvSXFpNys4OUo4OGFuNVV3Z1k0R0N5cUdTSWIzRFFFSkVBSXZNWDh3ZlRCN01Ia0VJSVg1Sjd3SHEyTEt3N1JEVnNFTy9JR3l4b2cvMm5xNTV0aHcyZEU2elFXM01GVXdQYVE3TURreEZUQVRCZ05WQkFvVERITnBaM04wYjNKbExtUmxkakVnTUI0R0ExVUVBeE1YYzJsbmMzUnZjbVV0ZEhOaExYTmxiR1p6YVdkdVpXUUNGRG9UVkM4TWtHSHV2TUZETDh1S2pvc3FJNHNNTUFvR0NDcUdTTTQ5QkFNQ0JHY3daUUl3ZFl1aE04bndpR2UrcFYrYmNmUk4vTEpHekRQRklFcUhoVzd4Q2E4VVZIQURlZTJJYW1iL0w5MWQ1ejExSXQrM0FqRUF1TExrcmkrS1RyYVV1SmpJQU5HRFRVMWdxRHNydVRjNmhzYUJQTlJ4SzFHVVZCL3habTZ6SlJsd3A3MVBtVy9mIn1dfX0sIm1lc3NhZ2VTaWduYXR1cmUiOnsibWVzc2FnZURpZ2VzdCI6eyJhbGdvcml0aG0iOiJTSEEyXzI1NiIsImRpZ2VzdCI6Ilk0aTd3NXFHU1lMVUVEQjA2OWxlTnR4UklXZTdqNjNFSk5pZ3pNczlVcjA9In0sInNpZ25hdHVyZSI6Ik1FWUNJUUREVCtWN09qM3o4bzUxUXZiNlNjaVl2eHZVZ0NabmlsN3dwY0xBTXQzVllRSWhBTUlralJFdjhja0xOV2xQbGRZeUZiVW5rYlloL0VRdXJqaGJ1UmkrdFdTeiJ9fQ=="
+  }
+}

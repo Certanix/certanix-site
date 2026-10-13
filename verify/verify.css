@@ -159,6 +159,6 @@ footer p{margin:0 0 7px; max-width:none}
 [hidden]{display:none !important}
 
 /* Output a visitor copies or reads in full: wrap rather than hide it behind a scroll. */
-#equivalent, #output{white-space:pre-wrap; word-break:break-all}
+#equivalent, #output, #sample-command{white-space:pre-wrap; word-break:break-all}
 /* Fingerprints and digests in running text are one unbreakable word: let them wrap. */
 p, li, .small, code{overflow-wrap:anywhere}

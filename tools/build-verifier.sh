@@ -1,44 +1,49 @@
 #!/usr/bin/env bash
-# Build the verifier bundle /verify runs: the certanix-verify wheel, built from a COMMITTED
-# ref of a certanix-beta checkout (never a working tree), and asn1crypto 1.5.1, its one
-# pure-Python dependency that Pyodide does not ship. Writes verify/runtime/verifier/.
+# Put the PUBLIC certanix-verify wheel, and asn1crypto 1.5.1 (its one pure-Python
+# dependency that Pyodide does not ship), into verify/runtime/verifier/, with the
+# licence files the page links to.
 #
-# verify/runtime/verifier/ is GITIGNORED on purpose. The internal certanix-verify build
-# contains modules that are not yet cleared for publication. The bundle is built locally
-# to test the page; what goes live is decided by Axel, and only from a build cleared for
-# release. See verify/README.md.
+# The wheel is the public release artifact, built outside any repository by the
+# certanix-verify release preparation. This script refuses a wheel that is not a public
+# build: a version with a local suffix (anything after a "+"), or a licence other than
+# BSD-3-Clause-Clear.
 #
-# Usage: tools/build-verifier.sh /path/to/certanix-beta [REF]      (REF defaults to main)
+# Usage: tools/build-verifier.sh /path/to/certanix_verify-X.Y.Z-py3-none-any.whl
 set -euo pipefail
 
-BETA="${1:?path to a certanix-beta checkout}"
-REF="${2:-main}"
+WHEEL="${1:?path to the public certanix_verify wheel}"
 ASN1_WHEEL="asn1crypto-1.5.1-py2.py3-none-any.whl"
 ASN1_SHA256="db4e40728b728508912cbb3d44f19ce188f218e9eba635821bb4b68564f8fd67"
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DEST="$ROOT/verify/runtime/verifier"
+LICENCE="$ROOT/verify/licence"
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 
-commit="$(git -C "$BETA" rev-parse "$REF^{commit}")"
-git -C "$BETA" archive "$commit" packages/certanix-verify | tar -x -C "$WORK"
-python3 -m venv "$WORK/venv"
-"$WORK/venv/bin/pip" -q install hatchling
-"$WORK/venv/bin/pip" -q wheel --no-deps --no-build-isolation \
-  "$WORK/packages/certanix-verify" -w "$WORK/dist"
-"$WORK/venv/bin/pip" -q download --no-deps "asn1crypto==1.5.1" -d "$WORK/dist"
+python3 -m pip -q download --no-deps "asn1crypto==1.5.1" -d "$WORK"
 
-rm -rf "$DEST" && mkdir -p "$DEST"
-cp "$WORK"/dist/*.whl "$DEST/"
-python3 - "$DEST" "$commit" "$ASN1_WHEEL" "$ASN1_SHA256" <<'PY'
-import base64, glob, hashlib, json, os, sys
-dest, commit, asn1, asn1_sha = sys.argv[1:]
+rm -rf "$DEST" "$LICENCE" && mkdir -p "$DEST" "$LICENCE"
+cp "$WHEEL" "$WORK/$ASN1_WHEEL" "$DEST/"
+python3 - "$DEST" "$LICENCE" "$(basename "$WHEEL")" "$ASN1_WHEEL" "$ASN1_SHA256" <<'PY'
+import base64, hashlib, json, re, sys, zipfile
+dest, licence, verifier, asn1, asn1_sha = sys.argv[1:]
 def sha(path):
     return hashlib.sha256(open(path, "rb").read()).digest()
 if sha(f"{dest}/{asn1}").hex() != asn1_sha:
     sys.exit(f"{asn1}: sha256 is not the pinned one")
-[verifier] = [os.path.basename(p) for p in glob.glob(f"{dest}/certanix_verify-*.whl")]
+with zipfile.ZipFile(f"{dest}/{verifier}") as w:
+    [meta] = [n for n in w.namelist() if n.endswith(".dist-info/METADATA")]
+    metadata = w.read(meta).decode()
+    version = re.search(r"^Version: (.+)$", metadata, re.M).group(1).strip()
+    if "+" in version:
+        sys.exit(f"refusing {verifier}: version {version} is not a public build")
+    if "License-Expression: BSD-3-Clause-Clear" not in metadata:
+        sys.exit(f"refusing {verifier}: not licensed BSD-3-Clause-Clear")
+    # The licence files the page links to: exactly those inside the wheel.
+    for name in ("LICENSE", "NOTICE", "PATENTS-NOTICE.md"):
+        data = w.read(f"{meta.rsplit('/', 1)[0]}/licenses/{name}")
+        open(f"{licence}/{name if name != 'PATENTS-NOTICE.md' else name}", "wb").write(data)
 wheels = []
 for name in (verifier, asn1):
     digest = sha(f"{dest}/{name}")
@@ -49,11 +54,8 @@ for name in (verifier, asn1):
         # that is not this one is refused by the browser before Python sees it.
         "integrity": "sha256-" + base64.b64encode(digest).decode(),
     })
-bundle = {
-    "certanix_verify_version": verifier.split("-")[1],
-    "built_from_commit": commit,
-    "wheels": wheels,
-}
+bundle = {"certanix_verify_version": version, "wheels": wheels}
 json.dump(bundle, open(f"{dest}/bundle.json", "w"), indent=2)
+open(f"{dest}/bundle.json", "a").write("\n")
 print(json.dumps(bundle, indent=2))
 PY

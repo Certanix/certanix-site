@@ -246,11 +246,14 @@ async function render(parsed, machine, human, shown, key) {
 
 function showSampleIfConfigured() {
   const section = $("sample");
-  const { sampleHref, sampleSha256, sampleDescription } = section.dataset;
+  const { sampleHref, sampleSha256, sampleSchema, sampleDescription } = section.dataset;
   if (!sampleHref || !sampleSha256) return;
+  const file = sampleHref.split("/").pop();
   $("sample-link").href = sampleHref;
   $("sample-sha256").textContent = sampleSha256;
+  $("sample-schema").textContent = sampleSchema || "";
   $("sample-description").textContent = sampleDescription || "";
+  $("sample-command").textContent = `certanix-verify verify ${file} --key ${HSM_KEY_NAME}`;
   section.hidden = false;
 }
 
