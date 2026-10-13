@@ -1,0 +1,64 @@
+# certanix.eu/verify
+
+A page that explains what verifying a Certanix evidence pack proves, gives the
+command-line steps, publishes the signing key, and verifies a pack in the browser.
+
+**Status: draft on branch `verify-page`. Not published.** Nothing here goes live until
+Axel approves it.
+
+## Files
+
+| Path | What it is |
+|---|---|
+| `index.html` | The page. Its content security policy is in a `<meta>` tag (GitHub Pages cannot set headers). |
+| `verify.css` | The site's identity, in a file of its own: the policy allows no inline style. |
+| `app.mjs` | The page around the verifier: loads it, closes the network, checks the lock, handles files. |
+| `engine.mjs` | Loads Pyodide and the verifier wheel; `runCli(argv, files)` calls `certanix_verify.cli.main`. No verification logic in JavaScript. |
+| `keys/certanix-hsm.pub` | The HSM public key. SHA-256 of its DER SPKI: `5849077784fa60616ea83e8bff35c8b294e17631a42435cd20192dd09d9f9ae5`. |
+| `runtime/pyodide/` | Pyodide 314.0.7 (CPython 3.14.2), vendored by `tools/vendor-pyodide.sh`, checked against the npm sha512 and the lock's sha256 for each wheel. MPL-2.0. |
+| `runtime/verifier/` | **Gitignored.** The certanix-verify wheel and asn1crypto, built by `tools/build-verifier.sh`. Fetched by the page with Subresource Integrity. |
+
+## The privacy guarantee, and how it is enforced
+
+1. The base policy permits connections to this site only (`connect-src 'self'`), so a
+   pack can never be sent to a third party.
+2. After the verifier loads, `app.mjs` adds a second policy with `connect-src 'none'`
+   and `script-src 'none'`. Policies only add up, so from then on the page can make no
+   connection at all.
+3. It then attempts a fetch. If the browser lets it through, the page refuses to accept
+   a file.
+
+What a content security policy cannot stop: the visitor themselves navigating away, and
+browser extensions, which run outside the page's policy.
+
+## Before this can go live
+
+- [ ] A certanix-verify build cleared for publication, built into `runtime/verifier/` and
+      committed (remove the `.gitignore` line). The page needs no change.
+- [ ] certanix-verify released on a package index, or the install commands under
+      "Verify on the command line" changed to wherever it is released. The `#prerelease`
+      notice comes out then.
+- [ ] Optional: a sample pack (below).
+- [ ] A link from the home page to `/verify/`.
+
+## Adding the sample pack
+
+Axel chooses the pack. Any signing happens only at cosign's own PIN prompt, entered by
+Axel. Then:
+
+1. Put the file at `verify/sample/<name>.json`.
+2. In `index.html`, fill the `data-sample-*` attributes of `<section id="sample">`:
+   `href` (`sample/<name>.json`), `sha256` (of the file), `schema`, `description`.
+3. The section appears; no other change is needed. The sample is a download, not
+   fetched by the verifier, so the page's no-network rule is unchanged.
+
+## Testing locally
+
+```bash
+tools/vendor-pyodide.sh                      # only when changing the Pyodide version
+tools/build-verifier.sh /path/to/certanix-beta main
+python3 -m http.server 8765 --bind 127.0.0.1  # then open http://127.0.0.1:8765/verify/
+```
+
+The conformance run (every corpus case through this page's `runCli` and through the CLI,
+compared byte for byte) lives in the private repository, with the corpus.

@@ -3,3 +3,7 @@ dns-baseline.txt
 *.txt
 godaddy-zone-baseline.json
 RUNBOOK.md
+
+# Built locally by tools/build-verifier.sh. Not committed until a certanix-verify build
+# cleared for publication exists and Axel approves it (see verify/README.md)
+verify/runtime/verifier/

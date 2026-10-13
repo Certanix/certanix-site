@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!--
+  Content security policy. Scripts, styles and fetches may come from this site only;
+  nothing may be framed, posted or loaded from anywhere else. 'wasm-unsafe-eval' lets
+  the browser compile the Python interpreter (WebAssembly) and nothing more: it does not
+  permit eval() of JavaScript. Once the verifier has loaded, app.mjs adds a second policy
+  that forbids every further connection, and checks the browser applied it before it
+  accepts a file.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify an evidence pack</title>
+<meta name="description" content="Verify a Certanix evidence pack yourself: in this browser, offline, with the unchanged certanix-verify code, or on the command line.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://certanix.eu/verify/">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Cpath d='M 18 52 L 18 14 L 46 14 L 46 52' stroke='%23FFFFFF' stroke-width='6' fill='none' stroke-linecap='square'/%3E%3Crect x='24' y='40' width='14' height='5' fill='%23F5C518'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="verify.css">
+<script type="module" src="app.mjs"></script>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="registry"></div>
+    <div class="lockup">
+      <a href="/" aria-label="Certanix home">
+        <svg class="mark" viewBox="-10 -22 157 258" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path class="frame" d="M 0 220 L 0 0 L 130 0 L 130 220" stroke-width="14" stroke-linecap="square" fill="none"/>
+          <rect class="latch" x="30" y="156" width="70" height="12"/>
+          <line class="tick" x1="65" y1="-10" x2="65" y2="0" stroke-width="2"/>
+        </svg>
+        <span class="wordmark">CERTANI<span class="x">X</span></span>
+      </a>
+    </div>
+    <h1 class="page-title">Verify an evidence pack</h1>
+    <p class="lede">Check a Certanix evidence pack yourself, on your own machine, without contacting us. This page does it in your browser. The command line does it anywhere, including a machine with no network at all.</p>
+  </header>
+
+  <section id="proves">
+    <h2>What verification proves</h2>
+    <ul class="facts">
+      <li>
+        <span class="t">The content is exactly what was signed</span>
+        <span class="d">The verifier recomputes the pack's canonical bytes from the document you hold and checks them against the signature inside it, using a public key you supply. Change one value and the check fails. Reformatting the file (indentation, key order) does not change its content, so it still verifies.</span>
+      </li>
+      <li>
+        <span class="t">It was signed by the holder of that key</span>
+        <span class="d">Only the private key that matches the public key can produce a signature that checks. When the public key is the Certanix key below, and you have confirmed its fingerprint, the pack was signed by Certanix's hardware-held signing key.</span>
+      </li>
+      <li>
+        <span class="t">It is well formed, and claims nothing its own record denies</span>
+        <span class="d">The pack must match the published schema for its version. It must also not claim a capability that its own recorded capability gate refuses. A pack whose signature is valid but which breaks either rule does not verify.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="does-not-prove">
+    <h2>What it does not prove</h2>
+    <ul class="plain">
+      <li><strong>That the results are true, or that the system is safe.</strong> A signature shows who signed and that nothing changed since. It does not show that what was recorded is correct.</li>
+      <li><strong>That anyone has approved the system.</strong> An evidence pack is pre-certification evidence. Certanix does not certify, type-approve or authorise anything, and no verification result is a decision of a notified body or an authority.</li>
+      <li><strong>Whose key it is, on its own.</strong> A signature checks against whatever key it is given. Confirm the key's fingerprint through a channel you already trust before you rely on a result.</li>
+      <li><strong>When it was signed, or that it is the latest version.</strong> Verification does not establish a signing date or rule out a newer, superseding pack. A trusted timestamp, where a pack has one, is checked separately (<code>certanix-verify vault</code>).</li>
+      <li><strong>That the key has not since been withdrawn.</strong> Verification is offline, so it consults no revocation list.</li>
+    </ul>
+  </section>
+
+  <section id="key">
+    <h2>The Certanix signing key</h2>
+    <p>Evidence packs are signed by a key generated in, and held by, a YubiHSM 2 hardware security module in FIPS mode. This is its public key, and the SHA-256 fingerprint of its DER-encoded SubjectPublicKeyInfo:</p>
+    <span class="label">Fingerprint (SHA-256, DER SPKI)</span>
+    <div class="mono" id="fingerprint">5849:0777:84FA:6061:6EA8:3E8B:FF35:C8B2:94E1:7631:A424:35CD:2019:2DD0:9D9F:9AE5</div>
+    <span class="label">Public key (PEM)</span>
+    <pre id="hsm-pem">-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEx09YPKh2p2eWTQGQDPxCJv1gO1ua
+E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
+-----END PUBLIC KEY-----</pre>
+    <p class="small" id="fingerprint-check">Download: <a href="keys/certanix-hsm.pub" download>certanix-hsm.pub</a>.</p>
+    <div class="callout">This page and the key above come from the same website. If this website were compromised, both could be replaced together. Compare the fingerprint with a copy you received another way (a document from us, printed material, a person you know) before you trust a result.</div>
+    <p class="small">Packs signed before 4 September 2026 were signed with the previous key and keep verifying against it. If a pack names a different key, ask whoever sent it for that key and its fingerprint.</p>
+    <p class="small">The schemas and vocabulary that packs reference are published at <a href="https://schema.certanix.eu/">schema.certanix.eu</a>. Verification never fetches them: the verifier carries its own copy, and a pack verifies with no network.</p>
+  </section>
+
+  <section id="browser">
+    <h2>Verify in this browser</h2>
+    <p>This runs <code>certanix-verify</code>, the same Python code as the command-line tool, inside your browser through <a href="https://pyodide.org/">Pyodide</a>. Nothing about verification is reimplemented in JavaScript.</p>
+    <div class="callout"><strong>Your file never leaves this browser.</strong> It is read from your disk into this page's memory and verified there. Once the verifier has loaded, the page makes no network connection of any kind: its content security policy forbids it, and the page checks that the browser enforces this before it accepts a file.</div>
+
+    <div class="tool" id="tool">
+      <p class="status" id="status" data-state="loading" role="status" aria-live="polite"><span class="dot"></span><span id="status-text">Loading the verifier (about 15 MB, from this site, once)&hellip;</span></p>
+
+      <label class="drop" id="drop" for="pack-input" aria-disabled="true">
+        <span class="big">Choose an evidence pack, or drop it here</span>
+        <span>A <code>.json</code> pack, or another signed Certanix artifact</span>
+        <span class="file" id="pack-name"></span>
+      </label>
+      <input class="visually-hidden" type="file" id="pack-input" accept=".json,application/json" disabled>
+
+      <fieldset id="key-choice" disabled>
+        <legend>Verify against</legend>
+        <label class="choice"><input type="radio" name="key" value="hsm" checked> <span>The Certanix signing key above <span class="hint">5849&hellip;9AE5</span></span></label>
+        <label class="choice"><input type="radio" name="key" value="own"> <span>A public key file I have</span></label>
+        <div class="subfile" id="own-key" hidden><input type="file" id="key-input" accept=".pub,.pem,text/plain"></div>
+      </fieldset>
+
+      <details id="byte-exact">
+        <summary>Byte-exact mode: canonical bytes and a detached bundle</summary>
+        <p class="small">For an archived artifact whose exact bytes are the claim. Nothing is recomputed, so any byte change fails, including a reformatting that the default mode accepts.</p>
+        <div class="subfile"><input type="file" id="bundle-input" aria-label="Detached signature bundle"></div>
+      </details>
+
+      <button type="button" id="verify" disabled>Verify</button>
+
+      <div class="result" id="result" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="detail" id="detail"></p>
+        <dl class="meta" id="meta"></dl>
+        <span class="label">Command-line output</span>
+        <pre id="output"></pre>
+        <span class="label">The same check on the command line</span>
+        <pre id="equivalent"></pre>
+      </div>
+
+      <dl class="meta runs" id="runtime" hidden></dl>
+    </div>
+  </section>
+
+  <section id="cli">
+    <h2>Verify on the command line</h2>
+    <div class="callout pending" id="prerelease">certanix-verify is not yet on a public package index. The install commands below work from its public release.</div>
+    <h3>Install</h3>
+    <p>Python 3.10 or later. The tool needs the standard library and two pinned packages, and nothing else.</p>
+<pre>python3 -m pip install certanix-verify</pre>
+    <p class="small">For a machine with no network: download on a connected machine, carry the files across, install from them.</p>
+<pre><span class="c"># connected machine</span>
+python3 -m pip download certanix-verify -d certanix-verify-wheels
+<span class="c"># offline machine</span>
+python3 -m pip install --no-index --find-links certanix-verify-wheels certanix-verify</pre>
+
+    <h3>Check the key</h3>
+<pre>curl -O https://certanix.eu/verify/keys/certanix-hsm.pub
+openssl pkey -pubin -in certanix-hsm.pub -outform DER | openssl dgst -sha256</pre>
+    <p class="small">The output must read <code>5849077784fa60616ea83e8bff35c8b294e17631a42435cd20192dd09d9f9ae5</code>. Without openssl (Windows, for instance), the same value from Python:</p>
+<pre>python3 -c "import hashlib,sys;from cryptography.hazmat.primitives import serialization as s;k=s.load_pem_public_key(open(sys.argv[1],'rb').read());print(hashlib.sha256(k.public_bytes(s.Encoding.DER,s.PublicFormat.SubjectPublicKeyInfo)).hexdigest())" certanix-hsm.pub</pre>
+
+    <h3>Verify</h3>
+<pre>certanix-verify verify evidence-pack.json --key certanix-hsm.pub
+echo $?   <span class="c"># 0 = verified; any other value is the reason it did not</span></pre>
+    <p class="small">Add <code>--json</code> for one machine-readable object. <code>certanix-verify --help</code> lists the other modes.</p>
+
+    <h3>Exit codes</h3>
+    <p>The exit code is the reason, so a script can act on why a pack failed without reading text.</p>
+    <table class="codes">
+      <thead><tr><th>Code</th><th>Class</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>OK</td><td>Signature valid over the canonical bytes; schema valid; no gate violation.</td></tr>
+        <tr><td>1</td><td>USAGE</td><td>Could not start: unreadable file, missing key, bad invocation. Says nothing about the pack.</td></tr>
+        <tr><td>2</td><td>MALFORMED_INPUT</td><td>Not readable as a JSON object (for example, truncated).</td></tr>
+        <tr><td>3</td><td>SCHEMA_INVALID</td><td>Readable, but does not match the schema. The signature was not reached.</td></tr>
+        <tr><td>4</td><td>UNSUPPORTED_SCHEMA_VERSION</td><td>A schema version or artifact type this verifier does not know. Refused rather than guessed.</td></tr>
+        <tr><td>5</td><td>SIGNATURE_MISSING</td><td>The pack carries no signature.</td></tr>
+        <tr><td>6</td><td>SIGNATURE_MALFORMED</td><td>A signature is present but cannot be decoded.</td></tr>
+        <tr><td>7</td><td>SIGNATURE_MISMATCH</td><td>These are not the bytes that were signed, or not under this key.</td></tr>
+        <tr><td>8</td><td>KEY_MISMATCH</td><td>The signature names a different signer from the key supplied.</td></tr>
+        <tr><td>9</td><td>GATE_VIOLATION</td><td>Signed and well formed, but claims a capability its recorded gate denies.</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Codes 10 to 13 belong to <code>certanix-verify vault</code>, which checks a trusted timestamp record.</p>
+  </section>
+
+  <!--
+    SAMPLE PACK: prepared, deliberately empty. Axel chooses the pack; any signing happens
+    only at cosign's own PIN prompt, entered by Axel. To publish one, place the file at
+    verify/sample/<name>.json and fill the four data-sample-* attributes below; app.mjs
+    then shows the section. Nothing else needs to change. See verify/README.md.
+  -->
+  <section id="sample" hidden
+           data-sample-href=""
+           data-sample-sha256=""
+           data-sample-schema=""
+           data-sample-description="">
+    <h2>A sample pack</h2>
+    <p id="sample-description"></p>
+    <p><a id="sample-link" href="#" download>Download the sample pack</a>, then verify it above or on the command line against the Certanix key.</p>
+    <span class="label">SHA-256 of the file</span>
+    <div class="mono" id="sample-sha256"></div>
+  </section>
+
+  <div class="registry bottom"></div>
+
+  <footer>
+    <p>Certanix is in formation. This site is published by GovStrat SRL, Brussels, Belgium, on its behalf.</p>
+    <p>The in-browser verifier runs Pyodide (Mozilla Public License 2.0) from this site. <a href="/">certanix.eu</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
