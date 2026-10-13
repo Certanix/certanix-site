@@ -3,8 +3,8 @@
   "wheels": [
     {
       "file": "certanix_verify-0.14.0-py3-none-any.whl",
-      "sha256": "f2e92d645c3ecfbda0331bff98f2255f694a5965c169dc7f52a8106660ebe775",
-      "integrity": "sha256-8uktZFw+z72gMxv/mPIlX2lKWWXBadx/UqgQZmDr53U="
+      "sha256": "2aabf5b4a8a8dc5265b5ed85bb46387e2fee48c8419ed5f77288268de4e7797f",
+      "integrity": "sha256-Kqv1tKio3FJlte2Fu0Y4fi/uSMhBntX3cogmjeTneX8="
     },
     {
       "file": "asn1crypto-1.5.1-py2.py3-none-any.whl",

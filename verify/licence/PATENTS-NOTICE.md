@@ -4,6 +4,6 @@ GovStrat SRL, applicant of European patent applications EP26301289.0 and EP26301
 
 This commitment does not cover generating, signing or producing evidence packs or any other document, nor any other product or service.
 
-It is irrevocable for use made in reliance on it, except that it ends for any party that asserts a patent against the applicant(s), Certanix SA or users of certanix-verify in connection with the verification of evidence packs.
+It is irrevocable for use made in reliance on it, except that it ends for any party that asserts a patent against GovStrat SRL, Certanix SA or users of certanix-verify in connection with the verification of evidence packs.
 
 This notice is not a licence. The BSD-3-Clause-Clear licence of this software grants no patent rights.
