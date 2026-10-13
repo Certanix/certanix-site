@@ -1,6 +1,6 @@
-DRAFT, pending counsel review. Patent non-assertion for verification.
+Patent non-assertion for verification.
 
-The applicant(s) of European patent applications EP26301289.0 and EP26301292.4, and their successors in title, including Certanix SA once incorporated, will not assert any claim of those applications, of any patent granted on them, or of any application or patent claiming their priority, against any person or organisation for making, using, copying, modifying or distributing certanix-verify, solely for the purpose of verifying evidence packs and related documents in the published Certanix evidence-pack format.
+GovStrat SRL, applicant of European patent applications EP26301289.0 and EP26301292.4, and its successors in title, including Certanix SA once incorporated, will not assert any claim of those applications, of any patent granted on them, or of any application or patent claiming their priority, against any person or organisation for making, using, copying, modifying or distributing certanix-verify, solely for the purpose of verifying evidence packs and related documents in the published Certanix evidence-pack format.
 
 This commitment does not cover generating, signing or producing evidence packs or any other document, nor any other product or service.
 

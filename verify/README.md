@@ -38,7 +38,7 @@ browser extensions, which run outside the page's policy.
 Nothing here is pushed: certanix-site is a public repository, so even a branch would
 publish it. Axel gives the go.
 
-- [ ] Counsel has reviewed PATENTS-NOTICE.md; the page calls it a draft until then.
+- [x] Counsel has reviewed and approved PATENTS-NOTICE.md (2026-10-13).
 - [ ] certanix-verify 0.14.0 released on PyPI. The `#prerelease` notice comes out then.
 - [ ] A link from the home page to `/verify/`.
 
