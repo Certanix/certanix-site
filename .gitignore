@@ -1,6 +1,8 @@
 # Scratch and verification output, never published
 dns-baseline.txt
 *.txt
+# ...except the plain-text copy of the patent notice, which is published
+!verify/licence/PATENTS-NOTICE.txt
 godaddy-zone-baseline.json
 RUNBOOK.md
 

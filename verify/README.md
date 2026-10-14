@@ -17,7 +17,7 @@ change to this page, its wheel or its sample is again Axel's decision before it 
 | `keys/certanix-hsm.pub` | The HSM public key. SHA-256 of its DER SPKI: `5849077784fa60616ea83e8bff35c8b294e17631a42435cd20192dd09d9f9ae5`. |
 | `runtime/pyodide/` | Pyodide 314.0.7 (CPython 3.14.2), vendored by `tools/vendor-pyodide.sh`, checked against the npm sha512 and the lock's sha256 for each wheel. MPL-2.0. |
 | `runtime/verifier/` | The PUBLIC certanix-verify wheel (0.14.0, BSD-3-Clause-Clear) and asn1crypto 1.5.1, placed by `tools/build-verifier.sh`, which refuses a wheel with a local version suffix or another licence. Fetched by the page with Subresource Integrity. |
-| `licence/` | LICENSE, NOTICE and PATENTS-NOTICE.md, extracted from that wheel, so the page links to exactly the files the package carries. |
+| `licence/` | LICENSE, NOTICE and PATENTS-NOTICE.md, extracted from that wheel, so the page links to exactly the files the package carries; `PATENTS-NOTICE.txt`, a plain-text copy; and `licence.html`, `notice.html`, `patents.html`, which show each file's text as it is in the wheel (GitHub Pages serves the raw files for download, not display). Written by `tools/licence_pages.py`; `tools/test_licence_pages.py` checks them against the wheel and the wheel against PyPI. |
 | `sample/` | The sample pack: the WP2 ALOHA robot-arm pack, schema 1.12, signed with the HSM key on 2026-10-04. |
 
 ## The privacy promise, and how it is enforced

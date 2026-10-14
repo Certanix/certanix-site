@@ -162,3 +162,7 @@ footer p{margin:0 0 7px; max-width:none}
 #equivalent, #output, #sample-command{white-space:pre-wrap; word-break:break-all}
 /* Fingerprints and digests in running text are one unbreakable word: let them wrap. */
 p, li, .small, code{overflow-wrap:anywhere}
+
+/* ---- the licence pages (verify/licence/*.html): a licence text, read in full ---- */
+pre.licence{white-space:pre-wrap; overflow-wrap:anywhere; font-size:13.5px; line-height:1.7; color:var(--body); margin-top:0}
+.licence + .small{margin-top:16px}

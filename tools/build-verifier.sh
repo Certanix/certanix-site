@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Put the PUBLIC certanix-verify wheel, and asn1crypto 1.5.1 (its one pure-Python
 # dependency that Pyodide does not ship), into verify/runtime/verifier/, with the
-# licence files the page links to.
+# licence files the page links to, and their HTML pages (tools/licence_pages.py).
 #
 # The wheel is the public release artifact, built outside any repository by the
 # certanix-verify release preparation. This script refuses a wheel that is not a public
@@ -59,3 +59,5 @@ json.dump(bundle, open(f"{dest}/bundle.json", "w"), indent=2)
 open(f"{dest}/bundle.json", "a").write("\n")
 print(json.dumps(bundle, indent=2))
 PY
+# The readable pages of those licence files, and the plain-text copy of the notice.
+python3 "$ROOT/tools/licence_pages.py"
