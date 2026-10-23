@@ -90,7 +90,8 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
   <section id="browser">
     <h2>Verify in this browser</h2>
     <p>This runs <code>certanix-verify</code>, the same Python code as the command-line tool, inside your browser through <a href="https://pyodide.org/">Pyodide</a>. Nothing about verification is reimplemented in JavaScript.</p>
-    <p>One dependency differs. The browser uses <code>cryptography</code> 47.0.0, the build Pyodide provides; the command-line tool pins <code>cryptography</code> 48.0.1. On every public test case of certanix-verify 0.14.0 (68 cases, each in JSON and in plain-text output), the browser and the command line gave identical results: the same exit code and the same output, byte for byte.</p>
+    <p>One dependency differs. The browser uses <code>cryptography</code> 47.0.0, the build Pyodide provides; the command-line tool pins <code>cryptography</code> 48.0.1. On every public test case of certanix-verify 0.15.0 (68 cases, each in JSON and in plain-text output, and again through <code>show</code> for the 52 that are packs, byte-exact files or standalone artifacts), the browser and the command line gave identical results: the same exit code and the same output, byte for byte.</p>
+    <p>Once a pack has verified, the page also shows what it covers: the system tested, the task and its pass criterion, the results, when and where it ran, the linked artefacts and the regulation clauses its evidence relates to. This is <code>certanix-verify show</code>, read only from the signed content and shown as plain text. A pack that does not verify shows its verdict and nothing from its contents.</p>
     <div class="callout"><strong>Your file never leaves this browser.</strong> It is read from your disk into this page's memory and verified there. Once the verifier has loaded, the page makes no network connection of any kind: its content security policy forbids it, and the page checks that the browser enforces this before it accepts a file.</div>
 
     <div class="tool" id="tool">
@@ -122,6 +123,11 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
         <p class="verdict" id="verdict"></p>
         <p class="detail" id="detail"></p>
         <dl class="meta" id="meta"></dl>
+        <div class="covers" id="covers" hidden>
+          <h3 id="covers-title"></h3>
+          <div id="covers-body"></div>
+        </div>
+        <p class="covers-note" id="covers-note" hidden></p>
         <span class="label">Command-line output</span>
         <pre id="output"></pre>
         <span class="label">The same check on the command line</span>
@@ -153,6 +159,9 @@ openssl pkey -pubin -in certanix-hsm.pub -outform DER | openssl dgst -sha256</pr
 <pre>certanix-verify verify evidence-pack.json --key certanix-hsm.pub
 echo $?   <span class="c"># 0 = verified; any other value is the reason it did not</span></pre>
     <p class="small">Add <code>--json</code> for one machine-readable object. <code>certanix-verify --help</code> lists the other modes.</p>
+    <p>To see what a pack covers once it has verified (the same summary this page shows):</p>
+<pre>certanix-verify show evidence-pack.json --key certanix-hsm.pub</pre>
+    <p class="small">The exit code is the verification result, as for <code>verify</code>. The clauses listed are what the evidence relates to: a pack is evidence, not a conformity assessment.</p>
 
     <h3>Licence</h3>
     <p>certanix-verify is released under the <a href="licence/licence.html">BSD-3-Clause-Clear</a> licence. Who holds the copyright: <a href="licence/notice.html">NOTICE</a>. Patents: <a href="licence/patents.html">PATENTS-NOTICE</a>, also as <a href="licence/PATENTS-NOTICE.txt">PATENTS-NOTICE (plain text)</a>. The licence itself grants no patent rights.</p>

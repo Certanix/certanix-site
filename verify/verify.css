@@ -150,6 +150,17 @@ dl.meta dt{color:var(--micro)}
 dl.meta dd{margin:0; color:var(--body); word-break:break-all; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:13px}
 @media (max-width:480px){ dl.meta{grid-template-columns:1fr} dl.meta dd{margin-bottom:6px} }
 
+/* What a verified pack covers. Every value is set with textContent: nothing from a pack
+   is ever markup, a link or a style. */
+.covers{margin-top:22px; border-top:1px solid var(--hair); padding-top:18px}
+.covers h3{margin:0 0 4px}
+.covers h4{margin:18px 0 0; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--micro)}
+.covers .note{margin:6px 0 0; color:var(--body); font-size:14.5px}
+.covers dl.meta{margin-top:8px}
+.covers dl.meta dd{word-break:normal; overflow-wrap:anywhere}
+.covers dd.list span{display:block}
+.covers-note{margin-top:18px; color:var(--white)}
+
 .runs{font-size:13.5px; color:var(--micro); margin-top:18px}
 .runs dd{font-size:12px}
 

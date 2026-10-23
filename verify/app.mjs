@@ -184,6 +184,10 @@ async function verify() {
 
     const machine = await runCli([...argv, "--json"], files);
     const human = await runCli(argv, files);
+    // What the pack covers: `certanix-verify show`, the same verification again and,
+    // only on exit 0, the summary it read from the signed bytes. The page decides
+    // nothing: it displays the sections the verifier wrote, or its one-line note.
+    const covers = await runCli(["show", ...argv.slice(1), "--json"], files);
     let parsed = null;
     try {
       parsed = JSON.parse(machine.stdout);
@@ -191,8 +195,11 @@ async function verify() {
       parsed = null;
     }
     render(parsed, machine, human, shown, key);
+    renderCovers(parsed, covers);
   } catch (err) {
     $("result").hidden = false;
+    $("covers").hidden = true;
+    $("covers-note").hidden = true;
     $("verdict").className = "verdict fail";
     $("verdict").textContent = "Could not run the verifier";
     $("detail").textContent = String(err && err.message ? err.message : err);
@@ -238,6 +245,74 @@ async function render(parsed, machine, human, shown, key) {
   $("output").textContent = output || "(no output)";
   $("equivalent").textContent = shown.join(" ");
   $("result").hidden = false;
+}
+
+// ---------------------------------------------------------------------------------- //
+// What a verified pack covers
+// ---------------------------------------------------------------------------------- //
+
+// Every string here came out of a pack, so every one is set with textContent: no
+// innerHTML, no Markdown, no link made from pack content. The text itself (labels,
+// escaping of control characters, truncation with "…") is the verifier's, in Python.
+function renderCovers(parsed, covers) {
+  const box = $("covers");
+  const body = $("covers-body");
+  const note = $("covers-note");
+  box.hidden = true;
+  note.hidden = true;
+  body.replaceChildren();
+
+  let out = null;
+  try {
+    out = JSON.parse(covers.stdout);
+  } catch {
+    out = null;
+  }
+  const verified = parsed && parsed.verified === true && covers.exitCode === 0;
+  if (!out || typeof out !== "object") return;
+  if (!verified || out.summary_status !== "shown" || !out.summary) {
+    // Never anything from a pack that failed: the verifier's one line, and only that.
+    if (typeof out.summary_note === "string") {
+      note.textContent = out.summary_note;
+      note.hidden = false;
+    }
+    return;
+  }
+
+  $("covers-title").textContent = "What this pack covers";
+  for (const section of out.summary.sections || []) {
+    const h = document.createElement("h4");
+    h.textContent = String(section.title);
+    body.append(h);
+    if (section.note) {
+      const p = document.createElement("p");
+      p.className = "note";
+      p.textContent = String(section.note);
+      body.append(p);
+    }
+    const rows = Array.isArray(section.rows) ? section.rows : [];
+    if (!rows.length) continue;
+    const dl = document.createElement("dl");
+    dl.className = "meta";
+    for (const [label, value] of rows) {
+      const dt = document.createElement("dt");
+      const dd = document.createElement("dd");
+      dt.textContent = String(label);
+      if (Array.isArray(value)) {
+        dd.className = "list";
+        for (const item of value) {
+          const line = document.createElement("span");
+          line.textContent = String(item);
+          dd.append(line);
+        }
+      } else {
+        dd.textContent = String(value);
+      }
+      dl.append(dt, dd);
+    }
+    body.append(dl);
+  }
+  box.hidden = false;
 }
 
 // ---------------------------------------------------------------------------------- //
