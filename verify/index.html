@@ -90,7 +90,7 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
   <section id="browser">
     <h2>Verify in this browser</h2>
     <p>This runs <code>certanix-verify</code>, the same Python code as the command-line tool, inside your browser through <a href="https://pyodide.org/">Pyodide</a>. Nothing about verification is reimplemented in JavaScript.</p>
-    <p>One dependency differs. The browser uses <code>cryptography</code> 47.0.0, the build Pyodide provides; the command-line tool pins <code>cryptography</code> 48.0.1. On every public test case of certanix-verify 0.15.0 (68 cases, each in JSON and in plain-text output, and again through <code>show</code> for the 52 that are packs, byte-exact files or standalone artifacts), the browser and the command line gave identical results: the same exit code and the same output, byte for byte.</p>
+    <p>One dependency differs. The browser uses <code>cryptography</code> 47.0.0, the build Pyodide provides; the command-line tool pins <code>cryptography</code> 48.0.1. On every public test case of certanix-verify 0.16.0 (73 cases, each in JSON and in plain-text output, and again through <code>show</code> for the 57 that are packs, byte-exact files or standalone artifacts), the browser and the command line gave identical results: the same exit code and the same output, byte for byte.</p>
     <p>Once a pack has verified, the page also shows what it covers: the system tested, the task and its pass criterion, the results, when and where it ran, the linked artefacts and the regulation clauses its evidence relates to. This is <code>certanix-verify show</code>, read only from the signed content and shown as plain text. A pack that does not verify shows its verdict and nothing from its contents.</p>
     <div class="callout"><strong>Your file never leaves this browser.</strong> It is read from your disk into this page's memory and verified there. Once the verifier has loaded, the page makes no network connection of any kind: its content security policy forbids it, and the page checks that the browser enforces this before it accepts a file.</div>
 
@@ -198,9 +198,9 @@ echo $?   <span class="c"># 0 = verified; any other value is the reason it did n
            data-sample-href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-mapped.evidence-pack.json"
            data-sample-sha256="9bd7843528fc4edb2e45a5ce817175123188cf22cd2820ee9445cdc0999b8364"
            data-sample-schema="1.14"
-           data-sample-description="A learned robot-arm policy (ACT, from LeRobot) on the ALOHA transfer-cube task, run in MuJoCo simulation: 8 selected scenarios, 5 passed and 3 failed. Signed with the Certanix signing key above. It also lists the EU legal provisions its tests relate to and, for each, what the pack does not show; verifying it shows them, after the note About the regulation references. It is a sample of the format; it claims nothing about safety.">
+           data-sample-description="A learned robot-arm policy (ACT, from LeRobot) on the ALOHA transfer-cube task, run in MuJoCo simulation with a public model and no customer data: 8 selected scenarios, 5 passed and 3 failed, signed with the Certanix key above. It also lists the EU legal provisions those tests relate to and, for each one, what the pack does not show. It is a sample of the format, not a certification, and claims nothing about safety: see">
     <h2>A sample pack</h2>
-    <p id="sample-description"></p>
+    <p><span id="sample-description"></span> <a href="https://schema.certanix.eu/references/regulation-clauses.html#about">About the regulation references</a>.</p>
     <p><a id="sample-link" href="#" download>Download the sample pack</a> (pack schema <span id="sample-schema"></span>), then verify it above or on the command line:</p>
 <pre id="sample-command"></pre>
     <span class="label">SHA-256 of the file</span>
