@@ -160,6 +160,8 @@ dl.meta dd{margin:0; color:var(--body); word-break:break-all; font-family:ui-mon
 .covers dl.meta dd{word-break:normal; overflow-wrap:anywhere}
 .covers dd.list span{display:block}
 .covers-note{margin-top:18px; color:var(--white)}
+.covers-about{margin:0 0 6px; color:var(--body); font-size:13.5px}
+.covers .disclaimer{margin:18px 0 0; padding:10px 12px; border-left:2px solid var(--micro); color:var(--body); font-size:13.5px}
 
 .runs{font-size:13.5px; color:var(--micro); margin-top:18px}
 .runs dd{font-size:12px}

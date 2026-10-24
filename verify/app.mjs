@@ -281,6 +281,14 @@ function renderCovers(parsed, covers) {
 
   $("covers-title").textContent = "What this pack covers";
   for (const section of out.summary.sections || []) {
+    // The regulation-references disclaimer: the verifier's own text, shown directly above
+    // the clauses it qualifies, and only when the pack carries schema 1.14 clauses.
+    if (typeof section.disclaimer === "string") {
+      const d = document.createElement("p");
+      d.className = "disclaimer";
+      d.textContent = section.disclaimer;
+      body.append(d);
+    }
     const h = document.createElement("h4");
     h.textContent = String(section.title);
     body.append(h);
