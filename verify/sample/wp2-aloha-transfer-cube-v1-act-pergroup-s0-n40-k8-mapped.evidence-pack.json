@@ -1,0 +1,441 @@
+{
+  "@context": "https://schema.certanix.eu/v1/evidence-context.jsonld",
+  "@type": "EvidencePack",
+  "schemaVersion": "1.14",
+  "id": "evp:embodied:wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-mapped:2026-10-23T18:27:07Z",
+  "subject": {
+    "tenant": "tenant-certanix-demo",
+    "device_manifest": "none",
+    "ai_policy_uri": "hf://lerobot/act_aloha_sim_transfer_cube_human@ba73b2766f1371cdc133ca4efb97eb090d744625",
+    "policy_hash": "sha256:42772891cb6eba1e7bc36ad8e12c0fa0723c61f036fa235c725ce6026e6e81df"
+  },
+  "campaign": {
+    "campaign_id": "wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-mapped",
+    "scenarios_executed": 8,
+    "environments_per_scenario": 1,
+    "total_simulation_hours": 0.014316666666666667,
+    "assurance_target": null,
+    "scenario_pass_rate": 0.625,
+    "adversarial_robustness_score": null,
+    "tail_probability_estimate": null,
+    "explainability_coverage": null,
+    "dataset_diversity_score": null,
+    "dataset_diversity_uplift": null
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c021",
+      "name": "AlohaTransferCube-v0",
+      "status": "failed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 1.0,
+        "sim_time_s": 8.0,
+        "steps_executed": 400.0,
+        "task_reward_max": 0.0
+      },
+      "anomalies": [],
+      "seed": 21,
+      "deterministic_hash": "e7dff71713cd9d7fab8ce09232e7b2e33482d0b69c08d43a2c661406ba65d03b"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c027",
+      "name": "AlohaTransferCube-v0",
+      "status": "failed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 1.0,
+        "sim_time_s": 8.0,
+        "steps_executed": 400.0,
+        "task_reward_max": 0.0
+      },
+      "anomalies": [],
+      "seed": 27,
+      "deterministic_hash": "8dce5744e5d8d405f0a38a7a2b46b41daf313a50e5dcf490cb88c6199276d6c4"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c000",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.42,
+        "steps_executed": 271.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 0,
+      "deterministic_hash": "5d435e9cc1fca00f5728053bcc1014f23405b79f2b386fc390bf075a8fcbb096"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c011",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.88,
+        "steps_executed": 294.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 11,
+      "deterministic_hash": "9f86a5f94c3cb467be8331c22a30d4708edebf9db8c28d4e5d0892fd159ba7ca"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c020",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.74,
+        "steps_executed": 287.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 20,
+      "deterministic_hash": "c834eaca10b5804d223870eed1510f40b748b822cc7f5a3240c97afc8bd37a6a"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c031",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 3.0,
+        "sim_time_s": 4.68,
+        "steps_executed": 234.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 31,
+      "deterministic_hash": "3e2b864f7a822fc7509d92a9a2ea348c73efc0d61c34884de50b75b663a8cb40"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c023",
+      "name": "AlohaTransferCube-v0",
+      "status": "passed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 4.0,
+        "sim_time_s": 5.82,
+        "steps_executed": 291.0,
+        "task_reward_max": 4.0
+      },
+      "anomalies": [],
+      "seed": 23,
+      "deterministic_hash": "fa131a692e26a5791f19138651738252a6616542c0c168052e1aeb637c7fdd68"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c034",
+      "name": "AlohaTransferCube-v0",
+      "status": "failed",
+      "environments_executed": 1,
+      "metrics": {
+        "contact_count_max": 3.0,
+        "sim_time_s": 8.0,
+        "steps_executed": 400.0,
+        "task_reward_max": 1.0
+      },
+      "anomalies": [],
+      "seed": 34,
+      "deterministic_hash": "0641bdef96e0eedad8a3cc2d84cd5b7642e830ffc46e10bea9bb0198a2c5a721"
+    }
+  ],
+  "shap_records": [],
+  "compliance_mappings": {
+    "ai_act_annex_iv": {},
+    "easa_l2_ml": {},
+    "do_178c": null,
+    "annex_iv_clauses": [],
+    "cra_annex_i_clauses": [],
+    "regulation_clauses": [
+      {
+        "framework": "machinery-regulation",
+        "instrument": "Regulation (EU) 2023/1230 (Machinery Regulation), OJ L 165, 29.6.2023, as corrected by OJ L 169, 4.7.2023",
+        "clause": "Annex IV Part A (g)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#machinery-annex-iv-a-g",
+          "legal": "Regulation (EU) 2023/1230 (CELEX 32023R1230), Annex IV, Part A, point (g)"
+        },
+        "relation": "relates-to",
+        "route": "Internal production control (module A, Art. 25(4) and Annex VI) against the Annex III essential health and safety requirements; no notified body. Annex I, Part A, points 5 and 6 concern machine learning that both ensures a safety function and is fully or partially self-evolving (recital 55); this is a frozen task policy. Applies from 20 January 2027 (Art. 54, as corrected); Directive 2006/42/EC until then.",
+        "why": "Results of tests on the control logic: the task, the success definition signed before the results, the seeds, per-scenario verdicts and the trace.",
+        "not_shown": "Which essential health and safety requirement each test verifies (the manufacturer's risk assessment, Part A (b), makes that link); tests on the physical machine.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          },
+          {
+            "type": "parameter-coverage-map",
+            "content_id": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+          }
+        ],
+        "source": null
+      },
+      {
+        "framework": "machinery-regulation",
+        "instrument": "Regulation (EU) 2023/1230 (Machinery Regulation), OJ L 165, 29.6.2023, as corrected by OJ L 169, 4.7.2023",
+        "clause": "Annex III 1.1.2(a)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#machinery-annex-iii-1-1-2-a",
+          "legal": "Regulation (EU) 2023/1230 (CELEX 32023R1230), Annex III, section 1.1.2(a)"
+        },
+        "relation": "relates-to",
+        "route": "Internal production control (module A, Art. 25(4) and Annex VI) against the Annex III essential health and safety requirements; no notified body. Annex I, Part A, points 5 and 6 concern machine learning that both ensures a safety function and is fully or partially self-evolving (recital 55); this is a frozen task policy. Applies from 20 January 2027 (Art. 54, as corrected); Directive 2006/42/EC until then.",
+        "why": "Fitness for its function: measured task success under the selected variations.",
+        "not_shown": "That the machine can be operated without putting persons at risk; reasonably foreseeable misuse.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          },
+          {
+            "type": "parameter-coverage-map",
+            "content_id": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+          }
+        ],
+        "source": null
+      },
+      {
+        "framework": "machinery-regulation",
+        "instrument": "Regulation (EU) 2023/1230 (Machinery Regulation), OJ L 165, 29.6.2023, as corrected by OJ L 169, 4.7.2023",
+        "clause": "Annex III 1.2.1, first paragraph and (c)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#machinery-annex-iii-1-2-1",
+          "legal": "Regulation (EU) 2023/1230 (CELEX 32023R1230), Annex III, section 1.2.1, first paragraph and point (c)"
+        },
+        "relation": "relates-to",
+        "route": "Internal production control (module A, Art. 25(4) and Annex VI) against the Annex III essential health and safety requirements; no notified body. Annex I, Part A, points 5 and 6 concern machine learning that both ensures a safety function and is fully or partially self-evolving (recital 55); this is a frozen task policy. Applies from 20 January 2027 (Art. 54, as corrected); Directive 2006/42/EC until then.",
+        "why": "The behaviour of the control logic across the tested variations, including the failing cases.",
+        "not_shown": "That an error in the control logic does not lead to a hazardous situation: the campaign scores task success, not hazards.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          },
+          {
+            "type": "parameter-coverage-map",
+            "content_id": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+          }
+        ],
+        "source": null
+      },
+      {
+        "framework": "machinery-regulation",
+        "instrument": "Regulation (EU) 2023/1230 (Machinery Regulation), OJ L 165, 29.6.2023, as corrected by OJ L 169, 4.7.2023",
+        "clause": "Annex III 1.2.1(d)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#machinery-annex-iii-1-2-1-d",
+          "legal": "Regulation (EU) 2023/1230 (CELEX 32023R1230), Annex III, section 1.2.1, point (d)"
+        },
+        "relation": "relates-to",
+        "route": "Internal production control (module A, Art. 25(4) and Annex VI) against the Annex III essential health and safety requirements; no notified body. Annex I, Part A, points 5 and 6 concern machine learning that both ensures a safety function and is fully or partially self-evolving (recital 55); this is a frozen task policy. Applies from 20 January 2027 (Art. 54, as corrected); Directive 2006/42/EC until then.",
+        "why": "The exact policy tested is pinned (weights sha256, and the weights actually loaded); a different policy is a different pack.",
+        "not_shown": "That the machine prevents modification of its settings or rules in use; the limits of the safety functions.",
+        "evidence_artifacts": [],
+        "source": null
+      },
+      {
+        "framework": "ai-act",
+        "instrument": "Regulation (EU) 2024/1689 (Artificial Intelligence Act), consolidated text CELEX 02024R1689-20260727",
+        "clause": "Annex IV 2(g)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#ai-act-annex-iv-2g",
+          "legal": "Regulation (EU) 2024/1689 (CELEX 02024R1689-20260727), Annex IV, point 2(g)"
+        },
+        "relation": "relates-to",
+        "route": "Likely not high-risk: Art. 6(1)(b) needs a third-party conformity assessment under the Annex I legislation, and the Machinery route for this frozen task policy is internal production control (see the Machinery entries). The Machinery Regulation is in Annex I, Section B (item 21, as amended by Regulation (EU) 2026/1744), where Art. 9, 10, 15 and Annex IV do not apply directly (Art. 2(2)). Related here as reference requirements only.",
+        "why": "The testing procedure in simulation: the task, the success definition signed before the results, the seeds, per-scenario verdicts and the trace.",
+        "not_shown": "Testing in real-world conditions (Art. 60, 60a); the gap between simulation and the real cell; test reports signed by the provider's responsible persons.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          },
+          {
+            "type": "parameter-coverage-map",
+            "content_id": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+          }
+        ],
+        "source": null
+      },
+      {
+        "framework": "ai-act",
+        "instrument": "Regulation (EU) 2024/1689 (Artificial Intelligence Act), consolidated text CELEX 02024R1689-20260727",
+        "clause": "Annex IV 1(c)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#ai-act-annex-iv-1c",
+          "legal": "Regulation (EU) 2024/1689 (CELEX 02024R1689-20260727), Annex IV, point 1(c)"
+        },
+        "relation": "relates-to",
+        "route": "Likely not high-risk: Art. 6(1)(b) needs a third-party conformity assessment under the Annex I legislation, and the Machinery route for this frozen task policy is internal production control (see the Machinery entries). The Machinery Regulation is in Annex I, Section B (item 21, as amended by Regulation (EU) 2026/1744), where Art. 9, 10, 15 and Annex IV do not apply directly (Art. 2(2)). Related here as reference requirements only.",
+        "why": "Software versions: policy repository and revision, weights sha256, harness pins and component versions.",
+        "not_shown": "Firmware on the physical robot; requirements related to version updates.",
+        "evidence_artifacts": [],
+        "source": null
+      },
+      {
+        "framework": "ai-act",
+        "instrument": "Regulation (EU) 2024/1689 (Artificial Intelligence Act), consolidated text CELEX 02024R1689-20260727",
+        "clause": "Annex IV 3",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#ai-act-annex-iv-3",
+          "legal": "Regulation (EU) 2024/1689 (CELEX 02024R1689-20260727), Annex IV, point 3"
+        },
+        "relation": "relates-to",
+        "route": "Likely not high-risk: Art. 6(1)(b) needs a third-party conformity assessment under the Annex I legislation, and the Machinery route for this frozen task policy is internal production control (see the Machinery entries). The Machinery Regulation is in Annex I, Section B (item 21, as amended by Regulation (EU) 2026/1744), where Art. 9, 10, 15 and Annex IV do not apply directly (Art. 2(2)). Related here as reference requirements only.",
+        "why": "Measured task success and the failing scenarios, under the tested variations.",
+        "not_shown": "The safety of persons near the arm; foreseeable unintended outcomes in the real cell.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          },
+          {
+            "type": "parameter-coverage-map",
+            "content_id": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+          }
+        ],
+        "source": null
+      },
+      {
+        "framework": "ai-act",
+        "instrument": "Regulation (EU) 2024/1689 (Artificial Intelligence Act), consolidated text CELEX 02024R1689-20260727",
+        "clause": "Art. 9(8)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#ai-act-art-9-8",
+          "legal": "Regulation (EU) 2024/1689 (CELEX 02024R1689-20260727), Article 9(8)"
+        },
+        "relation": "relates-to",
+        "route": "Likely not high-risk: Art. 6(1)(b) needs a third-party conformity assessment under the Annex I legislation, and the Machinery route for this frozen task policy is internal production control (see the Machinery entries). The Machinery Regulation is in Annex I, Section B (item 21, as amended by Regulation (EU) 2026/1744), where Art. 9, 10, 15 and Annex IV do not apply directly (Art. 2(2)). Related here as reference requirements only.",
+        "why": "Tested against a success criterion defined before the run.",
+        "not_shown": "The risk management system; the Machinery risk assessment.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          }
+        ],
+        "source": null
+      },
+      {
+        "framework": "ai-act",
+        "instrument": "Regulation (EU) 2024/1689 (Artificial Intelligence Act), consolidated text CELEX 02024R1689-20260727",
+        "clause": "Art. 15(4)",
+        "clause_text_ref": {
+          "file": "references/regulation-clauses.md#ai-act-art-15-4",
+          "legal": "Regulation (EU) 2024/1689 (CELEX 02024R1689-20260727), Article 15(4)"
+        },
+        "relation": "relates-to",
+        "route": "Likely not high-risk: Art. 6(1)(b) needs a third-party conformity assessment under the Annex I legislation, and the Machinery route for this frozen task policy is internal production control (see the Machinery entries). The Machinery Regulation is in Annex I, Section B (item 21, as amended by Regulation (EU) 2026/1744), where Art. 9, 10, 15 and Annex IV do not apply directly (Art. 2(2)). Related here as reference requirements only.",
+        "why": "Resilience across the task-parameter variations the campaign selects (recorded in the coverage map).",
+        "not_shown": "Fail-safe and redundancy; behaviour outside the simulated variations.",
+        "evidence_artifacts": [
+          {
+            "type": "embodied-trace",
+            "content_id": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+          },
+          {
+            "type": "parameter-coverage-map",
+            "content_id": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+          }
+        ],
+        "source": null
+      }
+    ],
+    "frameworks_considered_not_related": [
+      {
+        "framework": "cra",
+        "reason": "The campaign tests task behaviour in simulation, not a cybersecurity property, and no SBOM or vulnerability scan is ingested."
+      }
+    ]
+  },
+  "artefacts": [
+    {
+      "type": "embodied-trace",
+      "cid": "sha256:82ba89fe59ab17fd80763c0d00b69e465e4b9c6be2bccba1b5e6a813fdcf5235"
+    },
+    {
+      "type": "parameter-coverage-map",
+      "cid": "sha256:c8a4470e825572deb8da64f52cd844e76e3265f96fb3f26fd411929e6fc11c04"
+    }
+  ],
+  "ingested_artifacts": [],
+  "provenance": {
+    "platform_version": "certanix-beta@e784469e",
+    "ran_at": "2026-10-23T18:27:07Z",
+    "ran_on": null,
+    "component_versions": {
+      "mujoco": "3.3.6",
+      "dm_control": "1.0.34",
+      "gym-aloha": "0.1.4",
+      "gymnasium": "1.3.0",
+      "lerobot": "0.6.1",
+      "torch": "2.11.0",
+      "torchvision": "0.26.0",
+      "numpy": "2.2.6",
+      "PyOpenGL": "3.1.10",
+      "glfw": "2.10.2"
+    },
+    "quantum_job_ids": [],
+    "quantum_job_devices": [],
+    "quantum_beat": null,
+    "vehicle": null,
+    "selection_solver_class": null,
+    "platform_family": "macos-arm64",
+    "speed_fidelity": null,
+    "twin_fidelity": null,
+    "refusal_reason": null,
+    "harness": {
+      "harness_class": "sim-rigid-body-mujoco",
+      "provider": "mujoco",
+      "capabilities": [
+        "actuator_command",
+        "contact_pairs",
+        "joint_state",
+        "joint_velocity",
+        "object_pose",
+        "physical_interaction",
+        "rgb_camera"
+      ],
+      "pins_sha256": "09aeb30586cb261a70b7a717755bb845049efa08a44b74b02d1149376ecaf094",
+      "pins_path": "tools/mujoco-pin.v2.json"
+    },
+    "task": {
+      "task_id": "AlohaTransferCube-v0",
+      "env_package": "gym-aloha",
+      "env_revision": "gym-aloha 0.1.4, PyPI gym_aloha-0.1.4-py3-none-any.whl sha256 d9044290fbccddf0be4246b5287cf0eb6b9ddee545a3d222ce8d78c93ce7125e",
+      "success_definition": "gym_aloha/env.py AlohaEnv.step: `terminated = is_success = reward == 4`. gym_aloha/tasks/sim.py TransferCubeTask.get_reward, from contact pairs: 1 = cube touches the right gripper finger; 2 = and not the table (lifted); 3 = cube touches the left gripper finger (attempted transfer); 4 = left finger and not the table (successful transfer). max_reward = 4."
+    },
+    "policy": {
+      "policy_class": "policy-learned-deterministic",
+      "repo": "lerobot/act_aloha_sim_transfer_cube_human",
+      "revision": "ba73b2766f1371cdc133ca4efb97eb090d744625",
+      "weights_sha256": "42772891cb6eba1e7bc36ad8e12c0fa0723c61f036fa235c725ce6026e6e81df",
+      "loaded_weights_sha256": "aff8cfb701ae7e9e779784bb90d408c6f1fa1ea80c8d0604b6ee346ad8d8b7c0",
+      "derivation": "lerobot 0.6.1 `python -m lerobot.processor.migrate_policy_normalization --pretrained-path <original> --output-dir <migrated>`, run offline (HF_HUB_OFFLINE=1) on the published revision, which moves the normalisation statistics out of the weights into processor files; then the device fields in config.json and policy_preprocessor.json are set to \"cpu\", the device inference runs on. Without that second step the migration writes whatever accelerator the deriving host auto-selects in place of the published \"cuda\" (measured: \"mps\" on macos-arm64, \"cpu\" on linux-x86_64), so the derived files differed by platform",
+      "inference_device": "cpu",
+      "deterministic_algorithms": true,
+      "num_threads": 1
+    },
+    "renderer": {
+      "backend": "glfw",
+      "gl_vendor": "Apple",
+      "gl_renderer": "Apple M1 Max",
+      "gl_version": "2.1 Metal - 90.5",
+      "camera": "top",
+      "width": 640,
+      "height": 480
+    }
+  },
+  "signature": {
+    "algorithm": "ECDSA-P256",
+    "key_source": "yubihsm-hardware",
+    "signer_dn": null,
+    "signature_b64": "eyJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZGV2LnNpZ3N0b3JlLmJ1bmRsZS52MC4zK2pzb24iLCJ2ZXJpZmljYXRpb25NYXRlcmlhbCI6eyJwdWJsaWNLZXkiOnsiaGludCI6IldFa0hkNFQ2WUdGdXFENkwvelhJc3BUaGRqR2tKRFhOSUJrdDBKMmZtdVU9In19LCJtZXNzYWdlU2lnbmF0dXJlIjp7Im1lc3NhZ2VEaWdlc3QiOnsiYWxnb3JpdGhtIjoiU0hBMl8yNTYiLCJkaWdlc3QiOiJqZ21LRzdEeHdtTllJYmNRYTZlQzJCd2RHeHN5dno1aW9FV2R4SFJjVXZ3PSJ9LCJzaWduYXR1cmUiOiJNRVVDSUhmUXZjZ0dQLzA5QVNudFp0bDlxYTE4N1QrVTlpRDVkREZBRTdVYnhia3dBaUVBcTJZdURqRmRJaVFzcVZudDhyRWhjZXJYZFR5Wjc1WFBVRk12RGZGY21zQT0ifX0="
+  }
+}

@@ -188,21 +188,24 @@ echo $?   <span class="c"># 0 = verified; any other value is the reason it did n
   </section>
 
   <!--
-    SAMPLE PACK: Axel's choice, 2026-10-13: the WP2 ALOHA robot-arm pack, signed on the
-    YubiHSM on 2026-10-04 (no new signature). To change it, replace the file in
-    verify/sample/ and the data-sample-* attributes below. See verify/README.md.
+    SAMPLE PACK: since 2026-10-24, the WP2 ALOHA robot-arm pack on schema 1.14 with its
+    regulation clauses, signed on the YubiHSM by Axel on 2026-10-24. The earlier sample
+    (schema 1.12, signed 2026-10-04) stays in verify/sample/ at its old URL. To change the
+    sample, add the file to verify/sample/ and change the data-sample-* attributes below.
+    See verify/README.md.
   -->
   <section id="sample" hidden
-           data-sample-href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8.evidence-pack.json"
-           data-sample-sha256="5d605343ad74d6c64b5fca05ef7ff159be27260845d90ed190fdaf14c7d7d346"
-           data-sample-schema="1.12"
-           data-sample-description="A learned robot-arm policy (ACT, from LeRobot) on the ALOHA transfer-cube task, run in MuJoCo simulation: 8 selected scenarios, 5 passed and 3 failed. Signed with the Certanix signing key above. It is a sample of the format; it claims nothing about safety and maps to no regulation.">
+           data-sample-href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-mapped.evidence-pack.json"
+           data-sample-sha256="9bd7843528fc4edb2e45a5ce817175123188cf22cd2820ee9445cdc0999b8364"
+           data-sample-schema="1.14"
+           data-sample-description="A learned robot-arm policy (ACT, from LeRobot) on the ALOHA transfer-cube task, run in MuJoCo simulation: 8 selected scenarios, 5 passed and 3 failed. Signed with the Certanix signing key above. It also lists the EU legal provisions its tests relate to and, for each, what the pack does not show; verifying it shows them, after the note About the regulation references. It is a sample of the format; it claims nothing about safety.">
     <h2>A sample pack</h2>
     <p id="sample-description"></p>
     <p><a id="sample-link" href="#" download>Download the sample pack</a> (pack schema <span id="sample-schema"></span>), then verify it above or on the command line:</p>
 <pre id="sample-command"></pre>
     <span class="label">SHA-256 of the file</span>
     <div class="mono" id="sample-sha256"></div>
+    <p class="small">The earlier sample, the same campaign on pack schema 1.12 without regulation references, is still at <a href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8.evidence-pack.json" download>its original address</a> (SHA-256 5d605343ad74d6c64b5fca05ef7ff159be27260845d90ed190fdaf14c7d7d346).</p>
   </section>
 
   <div class="registry bottom"></div>

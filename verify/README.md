@@ -18,7 +18,7 @@ change to this page, its wheel or its sample is again Axel's decision before it 
 | `runtime/pyodide/` | Pyodide 314.0.7 (CPython 3.14.2), vendored by `tools/vendor-pyodide.sh`, checked against the npm sha512 and the lock's sha256 for each wheel. MPL-2.0. |
 | `runtime/verifier/` | The PUBLIC certanix-verify wheel (0.16.0, BSD-3-Clause-Clear) and asn1crypto 1.5.1, placed by `tools/build-verifier.sh`, which refuses a wheel with a local version suffix or another licence. Fetched by the page with Subresource Integrity. |
 | `licence/` | LICENSE, NOTICE and PATENTS-NOTICE.md, extracted from that wheel, so the page links to exactly the files the package carries; `PATENTS-NOTICE.txt`, a plain-text copy; and `licence.html`, `notice.html`, `patents.html`, which show each file's text as it is in the wheel (GitHub Pages serves the raw files for download, not display). Written by `tools/licence_pages.py`; `tools/test_licence_pages.py` checks them against the wheel and the wheel against PyPI. |
-| `sample/` | The sample pack: the WP2 ALOHA robot-arm pack, schema 1.12, signed with the HSM key on 2026-10-04. |
+| `sample/` | The sample pack, since 2026-10-24: the WP2 ALOHA robot-arm pack on schema 1.14, with its regulation clauses (`…-k8-mapped.evidence-pack.json`, sha256 `9bd78435…8364`), signed with the HSM key on 2026-10-24. The earlier sample, the same campaign on schema 1.12 signed on 2026-10-04 (`…-k8.evidence-pack.json`, `5d605343…d346`), stays at its old URL, linked from the sample section. |
 
 ## The privacy promise, and how it is enforced
 
@@ -45,7 +45,7 @@ is published.
 ## Changing the sample pack
 
 Axel chooses the pack. Any signing happens only at cosign's own PIN prompt, entered by
-Axel. Then replace the file in `verify/sample/` and the `data-sample-*` attributes of
+Axel. Then add the file to `verify/sample/` (keep the earlier ones: their URLs are cited elsewhere) and change the `data-sample-*` attributes of
 `<section id="sample">` in `index.html` (`href`, `sha256`, `schema`, `description`). The
 sample is a download, not fetched by the verifier, so the page's no-network rule is
 unchanged.
