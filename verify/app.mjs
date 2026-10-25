@@ -94,11 +94,22 @@ function currentKeyChoice() {
   return document.querySelector('input[name="key"]:checked').value;
 }
 
+// Each choice of file gets a number; only the latest one may become the pack.
+let packChoice = 0;
+
 async function takePack(file) {
   if (!file || document.body.dataset.locked !== "yes") return;
-  state.pack = await readFile(file);
-  $("pack-name").textContent = `${file.name} (${state.pack.bytes.length.toLocaleString()} bytes)`;
+  // Until the new file is read, there is no pack: the previous one must not be verified in
+  // its place, and Verify stays disabled.
+  const choice = ++packChoice;
+  state.pack = null;
   $("result").hidden = true;
+  $("pack-name").textContent = `${file.name} (reading…)`;
+  refreshButton();
+  const pack = await readFile(file);
+  if (choice !== packChoice) return;
+  state.pack = pack;
+  $("pack-name").textContent = `${file.name} (${pack.bytes.length.toLocaleString()} bytes)`;
   refreshButton();
 }
 
