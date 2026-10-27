@@ -240,6 +240,13 @@ function meaningOf(status) {
   return null;
 }
 
+// The failure class in words beside "NOT VERIFIED": SIGNATURE_MISMATCH reads "signature
+// mismatch". KEY_MISMATCH reads "wrong key", which is what it means to a visitor.
+function failureName(status) {
+  if (status === "KEY_MISMATCH") return "wrong key";
+  return String(status).toLowerCase().replace(/_/g, " ");
+}
+
 async function render(parsed, machine, human, shown, key) {
   const verdict = $("verdict");
   const code = machine.exitCode;
@@ -248,10 +255,10 @@ async function render(parsed, machine, human, shown, key) {
   const verified = parsed ? parsed.verified === true : false;
 
   verdict.className = "verdict " + (verified ? (test ? "test" : "pass") : "fail");
-  verdict.textContent = verified ? (test ? "VERIFIED WITH A TEST KEY" : "VERIFIED") : status;
+  verdict.textContent = verified ? (test ? "VERIFIED WITH A TEST KEY" : "VERIFIED") : "NOT VERIFIED";
   const codeSpan = document.createElement("span");
   codeSpan.className = "code";
-  codeSpan.textContent = `exit ${code}`;
+  codeSpan.textContent = verified || !parsed ? `exit ${code}` : `${failureName(status)} · exit ${code}`;
   verdict.append(codeSpan);
 
   const plain = $("plain");
@@ -627,8 +634,13 @@ function renderCovers(parsed, covers, keyLabel) {
   );
   renderStrip(sections, keyLabel);
 
+  // Reading order: the provisions first (with the disclaimer above them), then the
+  // frameworks considered and not related, then the record itself in the verifier's order.
+  const rank = (s) => (s.title === REQUIREMENTS ? 0 : s.title === UNRELATED ? 1 : 2);
+  const ordered = sections.map((s, i) => [s, i]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]);
+
   $("covers-title").textContent = "What this pack covers";
-  for (const section of sections) {
+  for (const [section] of ordered) {
     // The regulation-references disclaimer: the verifier's own text, verbatim, shown
     // directly above the clauses it qualifies, and only when the pack carries schema 1.14
     // clauses.
