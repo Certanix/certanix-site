@@ -1,31 +1,121 @@
 /* certanix.eu/verify. The site's identity (index.html), in a file of its own because
-   this page's content security policy allows no inline style. */
+   this page's content security policy allows no inline style.
+
+   Two themes from one set of tokens. Dark is the site's own; light follows the visitor's
+   system setting, or the toggle in the page corner (app.mjs, data-theme on <html>). Every
+   text colour is at least WCAG AA (4.5:1) on the surfaces it sits on, in both themes. */
 :root{
-  --ink:#0A0A0A;
+  color-scheme:dark;
+  --ink:#0A0A0A;          /* text on the signal colour (buttons) */
   --paper:#0A0A0A;
   --panel:#141412;
-  --hair:#26261F;
-  --white:#FFFFFF;
-  --body:#D4D4D0;
-  --muted:#A3A3A3;
-  --micro:#737373;
-  --signal:#F5C518;
+  --panel-2:#1C1C19;
+  --hair:#2E2E27;
+  --strong:#FFFFFF;
+  --body:#DCDCD8;
+  --muted:#B4B4AE;
+  --micro:#9C9C96;
+  --signal:#F5C518;       /* the brand yellow: rules, the latch, the button */
+  --link:#F5C518;
+  --link-line:rgba(245,197,24,.4);
+  --code:#F5C518;
   --pass:#4ADE80;
   --fail:#F87171;
+  --test:#F5C518;
+  --pass-fill:#4ADE80; --pass-on:#052E12;
+  --fail-fill:#F87171; --fail-on:#3B0A0A;
+  --other-fill:#8A8A84; --other-on:#0A0A0A;
+  --fail-tint:#3A1616;
+  --drop-line:#55554A;
+  --button-off:#3A3A32;
+  /* Frameworks: a stripe colour and a tint. Text on a tint is always --strong. */
+  --fw-teal:#2DD4BF;   --fw-teal-bg:#0E2B27;
+  --fw-violet:#A78BFA; --fw-violet-bg:#221A3A;
+  --fw-amber:#FBBF24;  --fw-amber-bg:#30250A;
+  --fw-blue:#60A5FA;   --fw-blue-bg:#0F2340;
+  --fw-grey:#A3A3A3;   --fw-grey-bg:#22221F;
+  --limit:#FBBF24; --limit-bg:#221C0B; --limit-text:#FCD34D;
 }
+:root[data-theme="light"]{
+  color-scheme:light;
+  --paper:#F6F6F2;
+  --panel:#FFFFFF;
+  --panel-2:#F1F1EC;
+  --hair:#D9D9D0;
+  --strong:#0A0A0A;
+  --body:#26261F;
+  --muted:#4E4E47;
+  --micro:#5E5E57;
+  --link:#7A5A00;
+  --link-line:rgba(122,90,0,.35);
+  --code:#6B4F00;
+  --pass:#166534;
+  --fail:#B91C1C;
+  --test:#8A6300;
+  --pass-fill:#15803D; --pass-on:#FFFFFF;
+  --fail-fill:#B91C1C; --fail-on:#FFFFFF;
+  --other-fill:#5E5E57; --other-on:#FFFFFF;
+  --fail-tint:#FCEBEB;
+  --drop-line:#B5B5A8;
+  --button-off:#DCDCD3;
+  --fw-teal:#0F766E;   --fw-teal-bg:#E3F3F0;
+  --fw-violet:#6D28D9; --fw-violet-bg:#EEE8FB;
+  --fw-amber:#B45309;  --fw-amber-bg:#FCF1DA;
+  --fw-blue:#1D4ED8;   --fw-blue-bg:#E4ECFB;
+  --fw-grey:#6B6B64;   --fw-grey-bg:#EEEEE9;
+  --limit:#B45309; --limit-bg:#FDF6E7; --limit-text:#8A3F00;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    color-scheme:light;
+    --paper:#F6F6F2;
+    --panel:#FFFFFF;
+    --panel-2:#F1F1EC;
+    --hair:#D9D9D0;
+    --strong:#0A0A0A;
+    --body:#26261F;
+    --muted:#4E4E47;
+    --micro:#5E5E57;
+    --link:#7A5A00;
+    --link-line:rgba(122,90,0,.35);
+    --code:#6B4F00;
+    --pass:#166534;
+    --fail:#B91C1C;
+    --test:#8A6300;
+    --pass-fill:#15803D; --pass-on:#FFFFFF;
+    --fail-fill:#B91C1C; --fail-on:#FFFFFF;
+    --other-fill:#5E5E57; --other-on:#FFFFFF;
+    --fail-tint:#FCEBEB;
+    --drop-line:#B5B5A8;
+    --button-off:#DCDCD3;
+    --fw-teal:#0F766E;   --fw-teal-bg:#E3F3F0;
+    --fw-violet:#6D28D9; --fw-violet-bg:#EEE8FB;
+    --fw-amber:#B45309;  --fw-amber-bg:#FCF1DA;
+    --fw-blue:#1D4ED8;   --fw-blue-bg:#E4ECFB;
+    --fw-grey:#6B6B64;   --fw-grey-bg:#EEEEE9;
+    --limit:#B45309; --limit-bg:#FDF6E7; --limit-text:#8A3F00;
+  }
+}
+
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%; background:var(--paper)}
 body{
   margin:0; background:var(--paper); color:var(--body);
-  font-family:"Helvetica Neue",Helvetica,Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:16.5px; line-height:1.66; font-weight:400;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px; line-height:1.6; font-weight:400;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+/* The page uses the screen: about 1200 px on a laptop, 1400 px on a large screen, 16 px
+   margins on a phone. Prose keeps a readable line length inside it. */
+.wrap{max-width:1200px; margin:0 auto; padding:0 32px}
+@media (min-width:1600px){ .wrap{max-width:1400px} }
 @media (max-width:480px){ .wrap{padding:0 16px} }
-a{color:var(--signal); text-decoration:none; border-bottom:1px solid rgba(245,197,24,.35); padding-bottom:1px}
-a:hover{border-bottom-color:var(--signal)}
-code{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace; font-size:.88em; color:var(--white)}
+a{color:var(--link); text-decoration:none; border-bottom:1px solid var(--link-line); padding-bottom:1px}
+a:hover{border-bottom-color:var(--link)}
+.mono-font, code, .mono, pre, dl.meta dd.mono, .chip.id{
+  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+code{font-size:.88em; color:var(--strong)}
 
 .registry{position:relative; height:1px; background:var(--signal); margin:0}
 .registry::before,.registry::after{content:""; position:absolute; top:0; width:1px; height:22px; background:var(--signal)}
@@ -34,139 +124,221 @@ code{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
 .registry.bottom::before,.registry.bottom::after{top:auto; bottom:0}
 
 /* ---- header: the lockup, smaller than the home page's ---- */
-header{padding-block:44px 0}
+header{padding-block:44px 0; position:relative}
 .lockup{display:flex; align-items:center; gap:18px; margin-top:30px}
 .lockup a{border:0; padding:0; display:flex; align-items:center; gap:18px}
 .mark{flex:0 0 auto; height:58px; width:auto; display:block}
-.mark .frame{stroke:var(--white)}
+.mark .frame{stroke:var(--strong)}
 .mark .latch{fill:var(--signal)}
-.mark .tick{stroke:var(--white)}
-.wordmark{margin:0; font-size:26px; font-weight:800; letter-spacing:.11em; color:var(--white); line-height:1}
+.mark .tick{stroke:var(--strong)}
+.wordmark{margin:0; font-size:26px; font-weight:800; letter-spacing:.11em; color:var(--strong); line-height:1}
 .wordmark .x{color:var(--signal)}
 .page-title{
-  margin:34px 0 0; font-size:clamp(28px,6vw,40px); font-weight:800; color:var(--white);
+  margin:34px 0 0; font-size:clamp(28px,6vw,42px); font-weight:800; color:var(--strong);
   line-height:1.12; letter-spacing:.005em;
 }
-.lede{margin:18px 0 0; font-size:clamp(17.5px,3vw,20px); line-height:1.56; color:var(--white); max-width:60ch}
+.lede{margin:18px 0 0; font-size:clamp(18px,3vw,21px); line-height:1.55; color:var(--strong); max-width:62ch}
+
+/* The light/dark switch, in the page corner. */
+.theme-toggle{
+  position:absolute; top:40px; right:0; margin:0;
+  appearance:none; background:var(--panel); color:var(--strong); border:1px solid var(--hair);
+  font:inherit; font-size:14px; font-weight:600; letter-spacing:.02em; padding:6px 12px; cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px; border-radius:999px;
+}
+.theme-toggle:hover{border-color:var(--muted)}
+.theme-toggle .swatch{width:12px; height:12px; border-radius:50%; border:1px solid var(--muted); background:linear-gradient(90deg,#0A0A0A 50%,#FFFFFF 50%)}
 
 /* ---- sections ---- */
-section{padding-block:38px}
+section{padding-block:40px}
 section + section{border-top:1px solid var(--hair)}
 h2{
-  margin:0 0 22px; font-size:11.5px; font-weight:700; letter-spacing:.3em;
+  margin:0 0 22px; font-size:14px; font-weight:700; letter-spacing:.2em;
   text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:12px;
 }
 h2::before{content:""; width:18px; height:2px; background:var(--signal); flex:0 0 auto}
-h3{margin:28px 0 10px; font-size:16.5px; font-weight:700; color:var(--white); letter-spacing:.01em}
+h3{margin:28px 0 10px; font-size:19px; font-weight:700; color:var(--strong); letter-spacing:.005em}
 h3:first-child{margin-top:0}
-p{margin:0 0 17px; max-width:66ch}
+p{margin:0 0 17px; max-width:72ch}
 p:last-child{margin-bottom:0}
-.small{font-size:14.5px; color:var(--muted)}
+.small{font-size:15.5px; color:var(--muted)}
 
 .callout{
-  background:var(--panel); border-left:2px solid var(--signal);
-  padding:18px 22px; margin:22px 0 0; color:var(--white); font-size:15.5px; max-width:none;
+  background:var(--panel); border-left:3px solid var(--signal);
+  padding:18px 22px; margin:22px 0 0; color:var(--strong); font-size:16px; max-width:80ch;
 }
 .callout.pending{border-left-color:var(--muted); color:var(--body)}
 
 ul.facts{list-style:none; margin:0; padding:0}
 ul.facts li{padding:18px 0; border-top:1px solid var(--hair)}
 ul.facts li:first-child{border-top:0; padding-top:0}
-ul.facts .t{display:block; font-weight:700; color:var(--white); margin-bottom:5px}
-ul.facts .d{display:block; max-width:66ch}
+ul.facts .t{display:block; font-weight:700; color:var(--strong); margin-bottom:5px}
+ul.facts .d{display:block; max-width:72ch}
 
 ul.plain{margin:0; padding:0; list-style:none}
-ul.plain li{position:relative; padding-left:22px; margin-bottom:13px; max-width:66ch}
-ul.plain li::before{content:""; position:absolute; left:0; top:11px; width:10px; height:2px; background:var(--muted)}
+ul.plain li{position:relative; padding-left:22px; margin-bottom:13px; max-width:72ch}
+ul.plain li::before{content:""; position:absolute; left:0; top:12px; width:10px; height:2px; background:var(--muted)}
 ul.plain li:last-child{margin-bottom:0}
 
 .mono, pre{
-  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-  font-size:12.5px; letter-spacing:.02em; line-height:1.75; color:var(--signal);
+  font-size:13px; letter-spacing:.02em; line-height:1.75; color:var(--code);
   background:var(--panel); border:1px solid var(--hair);
   padding:13px 15px; margin:12px 0 0; overflow-x:auto;
 }
 .mono{white-space:pre-wrap; word-break:break-all}
-pre{white-space:pre; color:var(--white)}
+pre{white-space:pre; color:var(--strong)}
 pre .c{color:var(--micro)}
 .label{
-  display:block; margin-top:18px; font-size:11px; font-weight:700; letter-spacing:.22em;
+  display:block; margin-top:20px; font-size:13px; font-weight:700; letter-spacing:.14em;
   text-transform:uppercase; color:var(--micro);
 }
 
-table.codes{border-collapse:collapse; width:100%; margin-top:14px; font-size:14.5px}
+table.codes{border-collapse:collapse; width:100%; margin-top:14px; font-size:15.5px}
 table.codes th,table.codes td{text-align:left; padding:8px 10px 8px 0; border-top:1px solid var(--hair); vertical-align:top}
-table.codes th{color:var(--micro); font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; border-top:0}
-table.codes td:first-child{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--white); width:3.2em}
-table.codes td:nth-child(2){font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--signal); white-space:nowrap; padding-right:16px}
+table.codes th{color:var(--micro); font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; border-top:0}
+table.codes td:first-child{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--strong); width:3.2em}
+table.codes td:nth-child(2){font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--code); white-space:nowrap; padding-right:16px}
 @media (max-width:580px){ table.codes td:nth-child(2){white-space:normal; word-break:break-all} }
 
 /* ---- the verifier ---- */
-.tool{background:var(--panel); border:1px solid var(--hair); padding:22px; margin-top:6px}
+.tool{background:var(--panel); border:1px solid var(--hair); padding:28px; margin-top:6px}
 @media (max-width:480px){ .tool{padding:16px} }
-.status{display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:var(--muted); margin:0 0 18px}
-.status .dot{flex:0 0 auto; width:9px; height:9px; margin-top:7px; background:var(--micro)}
+.status{display:flex; gap:10px; align-items:flex-start; font-size:15.5px; color:var(--muted); margin:0 0 18px; max-width:none}
+.status .dot{flex:0 0 auto; width:9px; height:9px; margin-top:8px; background:var(--micro)}
 .status[data-state="ready"] .dot{background:var(--pass)}
 .status[data-state="error"] .dot{background:var(--fail)}
 .status[data-state="loading"] .dot{background:var(--signal)}
 
 .drop{
-  display:block; border:1px dashed #4A4A40; padding:22px 18px; text-align:center; cursor:pointer;
+  display:block; border:1px dashed var(--drop-line); padding:22px 18px; text-align:center; cursor:pointer;
   color:var(--body); transition:border-color .15s, background .15s;
 }
-.drop:hover,.drop.over{border-color:var(--signal); background:rgba(245,197,24,.04)}
-.drop[aria-disabled="true"]{cursor:not-allowed; opacity:.5}
-.drop .big{display:block; color:var(--white); font-weight:700}
-.drop .file{display:block; margin-top:6px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:13px; color:var(--signal); word-break:break-all}
+.drop:hover,.drop.over{border-color:var(--signal); background:rgba(245,197,24,.06)}
+.drop[aria-disabled="true"]{cursor:not-allowed; opacity:.55}
+.drop .big{display:block; color:var(--strong); font-weight:700}
+.drop .file{display:block; margin-top:6px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:13.5px; color:var(--code); word-break:break-all}
 .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
 fieldset{border:0; margin:18px 0 0; padding:0}
-legend{padding:0; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--micro); margin-bottom:8px}
-.choice{display:flex; gap:10px; align-items:baseline; margin:6px 0; font-size:15px}
+legend{padding:0; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--micro); margin-bottom:8px}
+.choice{display:flex; gap:10px; align-items:baseline; margin:6px 0; font-size:16px}
 .choice input{accent-color:var(--signal)}
-.choice .hint{color:var(--micro); font-size:13.5px}
-.subfile{margin:8px 0 0 26px; font-size:14px}
-.subfile input{font-size:13px; color:var(--body); max-width:100%}
+.choice .hint{color:var(--micro); font-size:14.5px}
+.subfile{margin:8px 0 0 26px; font-size:15px}
+.subfile input{font-size:14px; color:var(--body); max-width:100%}
 
 details{margin-top:16px}
-summary{cursor:pointer; color:var(--muted); font-size:14.5px}
-summary:hover{color:var(--white)}
+summary{cursor:pointer; color:var(--muted); font-size:15.5px}
+summary:hover{color:var(--strong)}
 
 button{
   margin-top:20px; appearance:none; border:0; background:var(--signal); color:var(--ink);
   font:inherit; font-weight:700; letter-spacing:.06em; padding:11px 22px; cursor:pointer;
 }
-button:disabled{background:#3A3A32; color:var(--micro); cursor:not-allowed}
+button:disabled{background:var(--button-off); color:var(--micro); cursor:not-allowed}
 
-.result{margin-top:22px; border-top:1px solid var(--hair); padding-top:20px}
-.verdict{font-size:clamp(22px,4.4vw,28px); font-weight:800; letter-spacing:.04em; line-height:1.2; margin:0; word-break:break-word}
+/* ---- the result ---- */
+.result{margin-top:26px; border-top:1px solid var(--hair); padding-top:24px}
+/* Sized so the longest class name (SIGNATURE_MISMATCH) stays on one line at 390 px. */
+.verdict{font-size:clamp(22px,5.8vw,40px); font-weight:800; letter-spacing:.02em; line-height:1.15; margin:0; overflow-wrap:break-word; max-width:none}
 .verdict.pass{color:var(--pass)}
 .verdict.fail{color:var(--fail)}
-.verdict.test{color:var(--signal)}
-.verdict .code{font-size:.6em; font-weight:600; color:var(--muted); letter-spacing:.02em; margin-left:8px}
-.result .detail{margin-top:8px; color:var(--white)}
-dl.meta{display:grid; grid-template-columns:auto 1fr; gap:4px 18px; margin:16px 0 0; font-size:14px}
-dl.meta dt{color:var(--micro)}
-dl.meta dd{margin:0; color:var(--body); word-break:break-all; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:13px}
-@media (max-width:480px){ dl.meta{grid-template-columns:1fr} dl.meta dd{margin-bottom:6px} }
+.verdict.test{color:var(--test)}
+.verdict .code{font-size:.5em; font-weight:600; color:var(--muted); letter-spacing:.02em; margin-left:10px; white-space:nowrap}
+.result .plain{margin:12px 0 0; font-size:clamp(19px,2.6vw,22px); line-height:1.45; color:var(--strong); font-weight:600}
+.result .detail{margin-top:8px; color:var(--muted); font-size:16px}
+.covers-note{margin:14px 0 0; color:var(--strong); font-size:18px; padding:12px 16px; border-left:3px solid var(--fail); background:var(--panel-2); max-width:none}
+
+/* The summary strip: the five-second read, directly under the verdict. */
+.strip{margin-top:22px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
+.tile{background:var(--panel-2); border:1px solid var(--hair); padding:14px 16px; min-width:0}
+.tile.wide{grid-column:1 / -1}
+.tile .k{display:block; font-size:14px; font-weight:600; color:var(--muted); margin-bottom:4px}
+.tile .v{display:block; font-size:21px; font-weight:700; color:var(--strong); line-height:1.3; overflow-wrap:anywhere}
+.tile .v.mono-font{font-size:17px; font-weight:600}
+.tile .v.chips{display:flex; flex-wrap:wrap; gap:8px; font-size:16px; font-weight:600}
+.tile .more{align-self:center; color:var(--strong); font-size:16px; font-weight:600}
+
+.bar{grid-column:1 / -1; display:flex; gap:3px; min-height:40px; border:1px solid var(--hair)}
+.bar .seg{display:flex; align-items:center; justify-content:center; padding:0 12px; min-width:max-content;
+  font-size:16px; font-weight:700; white-space:nowrap}
+.bar .seg.pass{background:var(--pass-fill); color:var(--pass-on)}
+.bar .seg.fail{background:var(--fail-fill); color:var(--fail-on)}
+.bar .seg.other{background:var(--other-fill); color:var(--other-on)}
+
+.chip{display:inline-flex; align-items:center; gap:7px; padding:4px 10px; border:1px solid var(--hair);
+  background:var(--panel); color:var(--strong); font-size:15px; font-weight:600; line-height:1.35; overflow-wrap:anywhere; max-width:100%}
+.chip.id{font-size:13.5px; font-weight:500}
+.chip.failed{background:var(--fail-tint); border-color:var(--fail)}
+.chip.failed::before{content:"\2715"; color:var(--fail); font-family:system-ui,sans-serif; font-weight:700}
+.chip .dot{width:10px; height:10px; border-radius:50%; flex:0 0 auto; background:var(--fw-grey)}
+
+/* Framework colours, keyed in app.mjs on the verifier's exact labels. */
+.fw-teal{--fw:var(--fw-teal); --fw-bg:var(--fw-teal-bg)}
+.fw-violet{--fw:var(--fw-violet); --fw-bg:var(--fw-violet-bg)}
+.fw-amber{--fw:var(--fw-amber); --fw-bg:var(--fw-amber-bg)}
+.fw-blue{--fw:var(--fw-blue); --fw-bg:var(--fw-blue-bg)}
+.fw-grey{--fw:var(--fw-grey); --fw-bg:var(--fw-grey-bg)}
+.chip[class*="fw-"]{background:var(--fw-bg); border-color:var(--fw)}
+.chip[class*="fw-"] .dot{background:var(--fw)}
 
 /* What a verified pack covers. Every value is set with textContent: nothing from a pack
    is ever markup, a link or a style. */
-.covers{margin-top:22px; border-top:1px solid var(--hair); padding-top:18px}
-.covers h3{margin:0 0 4px}
-.covers h4{margin:18px 0 0; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--micro)}
-.covers .note{margin:6px 0 0; color:var(--body); font-size:14.5px}
-.covers dl.meta{margin-top:8px}
+.covers{margin-top:32px; border-top:1px solid var(--hair); padding-top:24px}
+.covers h3{margin:0 0 6px; font-size:24px}
+.covers h4{margin:30px 0 0; font-size:20px; font-weight:700; color:var(--strong); letter-spacing:.005em}
+.covers .note{margin:6px 0 0; color:var(--body); font-size:16px}
+.covers dl.meta{margin-top:10px}
 .covers dl.meta dd{word-break:normal; overflow-wrap:anywhere}
 .covers dd.list span{display:block}
-.covers-note{margin-top:18px; color:var(--white)}
-.covers-about{margin:0 0 6px; color:var(--body); font-size:13.5px}
-.covers .disclaimer{margin:18px 0 0; padding:10px 12px; border-left:2px solid var(--micro); color:var(--body); font-size:13.5px}
+.covers dd.chips{display:flex; flex-wrap:wrap; gap:8px}
+.covers-about{margin:0 0 6px; color:var(--body); font-size:16px}
+.covers .disclaimer{margin:24px 0 0; padding:16px 20px; border:1px solid var(--hair); border-left:3px solid var(--muted);
+  background:var(--panel-2); color:var(--strong); font-size:16.5px; line-height:1.6; max-width:none}
 
-.runs{font-size:13.5px; color:var(--micro); margin-top:18px}
-.runs dd{font-size:12px}
+dl.meta{display:grid; grid-template-columns:minmax(10em,auto) 1fr; gap:6px 22px; margin:16px 0 0; font-size:16px}
+dl.meta dt{color:var(--muted); font-weight:600}
+dl.meta dd{margin:0; color:var(--strong); word-break:break-all}
+dl.meta dd.mono{font-size:14px; background:none; border:0; padding:0; margin:0; color:var(--strong); letter-spacing:.01em; line-height:1.6}
+dl.meta dd.prose{max-width:75ch}
+@media (max-width:480px){ dl.meta{grid-template-columns:1fr; gap:2px} dl.meta dd{margin-bottom:8px} }
 
-footer{padding-block:24px 60px; color:var(--micro); font-size:13px; line-height:1.65}
+/* Regulation references: one group per framework, a card per clause. */
+.fw-group{margin-top:18px; border:1px solid var(--hair); background:var(--panel)}
+.fw-band{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 16px;
+  padding:12px 18px; background:var(--fw-bg); border-top:5px solid var(--fw)}
+.fw-band .name{font-size:19px; font-weight:800; color:var(--strong)}
+.fw-band .count{font-size:15px; font-weight:600; color:var(--strong)}
+.fw-route{padding:14px 18px 2px}
+.fw-route .k, .card .k{display:block; font-size:14px; font-weight:700; color:var(--muted); margin-bottom:2px}
+.fw-route p{margin:0; max-width:80ch; color:var(--strong); font-size:16px}
+.fw-route .grouped{margin-top:6px; font-size:14px; color:var(--micro); font-style:italic}
+.cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr)); gap:12px; padding:14px 18px 18px}
+.card{border:1px solid var(--hair); border-left:4px solid var(--fw); background:var(--panel-2); padding:14px 16px; min-width:0}
+.card .ref{margin:0; font-size:18px; font-weight:700; color:var(--strong); line-height:1.35}
+.card .act{margin:2px 0 0; font-size:14.5px; color:var(--muted)}
+.card .route{margin-top:12px}
+.card .route p{margin:0; font-size:16px; color:var(--body)}
+.limit{margin-top:12px; padding:10px 12px; border-left:4px solid var(--limit); background:var(--limit-bg)}
+.limit .k{display:block; font-size:14px; font-weight:700; color:var(--limit-text); margin-bottom:2px}
+.limit p{margin:0; font-size:16px; color:var(--strong)}
+.raw{margin-top:12px; padding:12px 14px; border:1px dashed var(--drop-line); background:var(--panel-2)}
+.raw .k{display:block; font-size:14px; font-weight:700; color:var(--muted)}
+.raw span.line{display:block; color:var(--strong); font-size:16px; overflow-wrap:anywhere}
+.notshown-more{margin:12px 0 0; color:var(--strong); font-size:16px}
+
+.unrelated{margin-top:14px; padding:14px 18px; background:var(--panel-2); border:1px solid var(--hair); border-left:4px solid var(--fw-grey)}
+.unrelated dl{display:grid; grid-template-columns:minmax(10em,auto) 1fr; gap:8px 22px; margin:0}
+.unrelated dt{font-weight:700; color:var(--strong)}
+.unrelated dd{margin:0; color:var(--body); max-width:80ch}
+@media (max-width:480px){ .unrelated dl{grid-template-columns:1fr; gap:2px} .unrelated dd{margin-bottom:8px} }
+
+.technical{margin:30px 0 0; font-size:20px; font-weight:700; color:var(--strong)}
+
+.runs{font-size:15px; color:var(--micro); margin-top:18px}
+.runs dd{font-size:13.5px; font-family:ui-monospace,Menlo,Consolas,monospace}
+
+footer{padding-block:24px 60px; color:var(--micro); font-size:14.5px; line-height:1.65}
 footer p{margin:0 0 7px; max-width:none}
 
 [hidden]{display:none !important}
@@ -177,5 +349,5 @@ footer p{margin:0 0 7px; max-width:none}
 p, li, .small, code{overflow-wrap:anywhere}
 
 /* ---- the licence pages (verify/licence/*.html): a licence text, read in full ---- */
-pre.licence{white-space:pre-wrap; overflow-wrap:anywhere; font-size:13.5px; line-height:1.7; color:var(--body); margin-top:0}
+pre.licence{white-space:pre-wrap; overflow-wrap:anywhere; font-size:14px; line-height:1.7; color:var(--body); margin-top:0; max-width:100ch}
 .licence + .small{margin-top:16px}

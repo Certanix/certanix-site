@@ -28,6 +28,7 @@
 
   <header>
     <div class="registry"></div>
+    <button type="button" class="theme-toggle" id="theme-toggle" hidden><span class="swatch" aria-hidden="true"></span><span id="theme-label">Light theme</span></button>
     <div class="lockup">
       <a href="/" aria-label="Certanix home">
         <svg class="mark" viewBox="-10 -22 157 258" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -121,14 +122,17 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
 
       <div class="result" id="result" hidden>
         <p class="verdict" id="verdict"></p>
+        <p class="plain" id="plain" hidden></p>
         <p class="detail" id="detail"></p>
-        <dl class="meta" id="meta"></dl>
+        <p class="covers-note" id="covers-note" hidden></p>
+        <div class="strip" id="strip" hidden></div>
         <div class="covers" id="covers" hidden>
           <h3 id="covers-title"></h3>
           <p class="covers-about">Regulation references in a pack are evidence, not a conformity assessment. <a href="https://schema.certanix.eu/references/regulation-clauses.html#about">About the regulation references</a></p>
           <div id="covers-body"></div>
         </div>
-        <p class="covers-note" id="covers-note" hidden></p>
+        <h4 class="technical">Technical details</h4>
+        <dl class="meta" id="meta"></dl>
         <span class="label">Command-line output</span>
         <pre id="output"></pre>
         <span class="label">The same check on the command line</span>

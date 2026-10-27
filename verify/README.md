@@ -11,8 +11,8 @@ change to this page, its wheel or its sample is again Axel's decision before it 
 | Path | What it is |
 |---|---|
 | `index.html` | The page. Its content security policy is in a `<meta>` tag (GitHub Pages cannot set headers). |
-| `verify.css` | The site's identity, in a file of its own: the policy allows no inline style. |
-| `app.mjs` | The page around the verifier: loads it, closes the network, checks the lock, handles files. |
+| `verify.css` | The site's identity, in a file of its own: the policy allows no inline style. Dark and light themes from one set of tokens (the system setting, or the toggle in the page corner); every text colour is at least WCAG AA on its surface in both. |
+| `app.mjs` | The page around the verifier: loads it, closes the network, checks the lock, handles files. Arranges what `show` printed for reading (a summary strip, clauses grouped by framework); a row without the shape certanix-verify 0.16.1 writes is shown as the verifier's raw text. The command-line output block is the verifier's, unchanged. |
 | `engine.mjs` | Loads Pyodide and the verifier wheel; `runCli(argv, files)` calls `certanix_verify.cli.main`. No verification logic in JavaScript. |
 | `keys/certanix-hsm.pub` | The HSM public key. SHA-256 of its DER SPKI: `5849077784fa60616ea83e8bff35c8b294e17631a42435cd20192dd09d9f9ae5`. |
 | `runtime/pyodide/` | Pyodide 314.0.7 (CPython 3.14.2), vendored by `tools/vendor-pyodide.sh`, checked against the npm sha512 and the lock's sha256 for each wheel. MPL-2.0. |
