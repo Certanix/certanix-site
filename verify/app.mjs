@@ -275,11 +275,19 @@ async function render(parsed, machine, human, shown, key) {
     meta.append(...termAndValue(label, value));
   };
   add("File", state.pack.name);
-  add("File SHA-256", await fileSha256(state.pack.bytes));
+  // In byte-exact mode the file is the signed bytes; in pack mode it is only what they were
+  // recomputed from, so its digest is not what was signed.
+  const fileLabel = shown.includes("--bundle")
+    ? "SHA-256 of the file"
+    : "SHA-256 of the file as presented, not what was signed";
+  add(fileLabel, await fileSha256(state.pack.bytes));
   add("Key", key.name);
   add("Key fingerprint", (await spkiSha256(key.bytes)) || "not a PEM public key");
-  if (parsed) add("Schema version", parsed.schema_version);
+  if (parsed) {
+    add(verified ? "Schema version" : "Schema version (as stated by the file, not verified)", parsed.schema_version);
+  }
   if (parsed) add("Verifier", parsed.verifier_version);
+  if (parsed) add("Rules (SHA-256 of the verifier's descriptors.json)", parsed.rules_sha256);
 
   const output = [human.stdout, human.stderr].filter(Boolean).join("\n").trimEnd();
   $("output").textContent = output || "(no output)";
@@ -297,7 +305,7 @@ async function render(parsed, machine, human, shown, key) {
 //
 // The page arranges that text for reading: a summary strip, clauses grouped by framework,
 // a clause's route and stated limit in their own boxes. It relies on the shapes
-// certanix-verify 0.16.1 writes (its _summary.py). A row that does not have the expected
+// certanix-verify 0.17.0 writes (its _summary.py). A row that does not have the expected
 // shape is shown as the verifier's raw row text, so nothing can silently disappear.
 // Grouping compares exact strings, and the page says when it has grouped.
 
@@ -640,6 +648,11 @@ function renderCovers(parsed, covers, keyLabel) {
   const ordered = sections.map((s, i) => [s, i]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]);
 
   $("covers-title").textContent = "What this pack covers";
+  // Byte-exact mode: the verifier's own label for what this summary rests on.
+  if (typeof out.summary.checks === "string") {
+    const checks = out.summary.checks;
+    body.append(el("p", "disclaimer", `${checks[0].toUpperCase()}${checks.slice(1)}.`));
+  }
   for (const [section] of ordered) {
     // The regulation-references disclaimer: the verifier's own text, verbatim, shown
     // directly above the clauses it qualifies, and only when the pack carries schema 1.14
