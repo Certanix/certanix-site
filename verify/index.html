@@ -55,8 +55,8 @@
         <span class="d">Only the private key that matches the public key can produce a signature that checks. When the public key is the Certanix key below, and you have confirmed its fingerprint, the pack was signed by Certanix's hardware-held signing key.</span>
       </li>
       <li>
-        <span class="t">It is well formed, and claims nothing its own record denies</span>
-        <span class="d">The pack must match the published schema for its version. It must also not claim a capability that its own recorded capability gate refuses. A pack whose signature is valid but which breaks either rule does not verify.</span>
+        <span class="t">It is well formed, and claims nothing the verifier's rules deny</span>
+        <span class="d">The pack must match the published schema for its version. It must also make no claim that the verifier's gate rules do not allow, such as results for a vehicle type no registered harness can test, or a claim its declared harness could not observe. The rules ship with the verifier, not the pack, and each result names them by SHA-256. A pack whose signature is valid but which breaks either rule does not verify.</span>
       </li>
     </ul>
   </section>
@@ -177,18 +177,20 @@ echo $?   <span class="c"># 0 = verified; any other value is the reason it did n
       <thead><tr><th>Code</th><th>Class</th><th>Meaning</th></tr></thead>
       <tbody>
         <tr><td>0</td><td>OK</td><td>Signature valid over the canonical bytes; schema valid; no gate violation.</td></tr>
-        <tr><td>1</td><td>USAGE</td><td>Could not start: unreadable file, missing key, bad invocation. Says nothing about the pack.</td></tr>
-        <tr><td>2</td><td>MALFORMED_INPUT</td><td>Not readable as a JSON object (for example, truncated).</td></tr>
+        <tr><td>1</td><td>USAGE</td><td>Could not start: unreadable file, missing or unreadable key, a key that is not ECDSA P-256, bad invocation. Says nothing about the pack.</td></tr>
+        <tr><td>2</td><td>MALFORMED_INPUT</td><td>Not readable as a JSON object (for example, truncated), or carries a repeated key or a NaN or Infinity constant, so it has no single meaning.</td></tr>
         <tr><td>3</td><td>SCHEMA_INVALID</td><td>Readable, but does not match the schema. The signature was not reached.</td></tr>
         <tr><td>4</td><td>UNSUPPORTED_SCHEMA_VERSION</td><td>A schema version or artifact type this verifier does not know. Refused rather than guessed.</td></tr>
         <tr><td>5</td><td>SIGNATURE_MISSING</td><td>The pack carries no signature.</td></tr>
         <tr><td>6</td><td>SIGNATURE_MALFORMED</td><td>A signature is present but cannot be decoded.</td></tr>
         <tr><td>7</td><td>SIGNATURE_MISMATCH</td><td>These are not the bytes that were signed, or not under this key.</td></tr>
         <tr><td>8</td><td>KEY_MISMATCH</td><td>The signature names a different signer from the key supplied.</td></tr>
-        <tr><td>9</td><td>GATE_VIOLATION</td><td>Signed and well formed, but claims a capability its recorded gate denies.</td></tr>
+        <tr><td>9</td><td>GATE_VIOLATION</td><td>Signed and well formed, but makes a claim the verifier's gate rules do not allow.</td></tr>
       </tbody>
     </table>
     <p class="small">Codes 10 to 13 belong to <code>certanix-verify vault</code>, which checks a trusted timestamp record.</p>
+    <p class="small"><strong>Harness capability check.</strong> A verified pack whose signed content declares no harness also shows "Harness capability check: not applicable (no harness in signed content)". That check had nothing to judge, and the verifier says so. It does not change the result, and other gate rules still apply.</p>
+    <p class="small"><strong>Schema version.</strong> The version shown is what the file states. It is labelled "as stated by the file, not verified" unless the signature and schema checks both passed. In <code>--json</code> the same fact is <code>schema_version_verified</code>, which is therefore true on code 0 and code 9. It is false in byte-exact mode, which checks no schema.</p>
   </section>
 
   <!--
