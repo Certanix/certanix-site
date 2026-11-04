@@ -284,11 +284,11 @@ async function render(parsed, machine, human, shown, key) {
   add("Key", key.name);
   add("Key fingerprint", (await spkiSha256(key.bytes)) || "not a PEM public key");
   if (parsed) {
-    add(verified ? "Schema version" : "Schema version (as stated by the file, not verified)", parsed.schema_version);
+    add(parsed.schema_version_verified ? "Schema version" : "Schema version (as stated by the file, not verified)", parsed.schema_version);
   }
   if (parsed) add("Verifier", parsed.verifier_version);
   if (parsed) add("Rules (SHA-256 of the verifier's descriptors.json)", parsed.rules_sha256);
-  if (parsed) add("Capability gate", parsed.capability_gate);
+  if (parsed) add("Harness capability check", parsed.harness_capability_check);
 
   const output = [human.stdout, human.stderr].filter(Boolean).join("\n").trimEnd();
   $("output").textContent = output || "(no output)";
