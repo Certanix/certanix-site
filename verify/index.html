@@ -86,6 +86,7 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
     <div class="callout">This page and the key above come from the same website. If this website were compromised, both could be replaced together. Compare the fingerprint with a copy you received another way (a document from us, printed material, a person you know) before you trust a result.</div>
     <p class="small">Packs signed before 4 September 2026 were signed with the previous key and keep verifying against it. If a pack names a different key, ask whoever sent it for that key and its fingerprint.</p>
     <p class="small">The schemas and vocabulary that packs reference are published at <a href="https://schema.certanix.eu/">schema.certanix.eu</a>. Verification never fetches them: the verifier carries its own copy, and a pack verifies with no network.</p>
+    <p class="small">The published pack schemas up to 1.14 describe the signature as ECDSA-P384. That text is wrong: the verifier enforces ECDSA P-256, and so does this page. <a href="https://schema.certanix.eu/notes/signature-curve.html">About the signature curve</a>.</p>
   </section>
 
   <section id="browser">
