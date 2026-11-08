@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -27,6 +28,10 @@ def test_every_relative_link_resolves_to_a_served_file():
         if target.endswith("/") or target == "":
             path = path / "index.html"
         assert path.is_file(), href
+        # Tracked, not merely present: an ignored file is on disk here and missing online.
+        tracked = subprocess.run(["git", "ls-files", "--error-unmatch", str(path.relative_to(_SITE))],
+                                 cwd=_SITE, capture_output=True, check=False)
+        assert tracked.returncode == 0, f"{href} is not tracked by git, so it is not published"
 
 
 def test_the_requirements_pin_the_wheel_the_verify_page_runs():
