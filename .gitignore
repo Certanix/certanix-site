@@ -3,6 +3,8 @@ dns-baseline.txt
 *.txt
 # ...except the plain-text copy of the patent notice, which is published
 !verify/licence/PATENTS-NOTICE.txt
+# ...and the hashed requirements file the five-minute page installs from
+!try/requirements.txt
 godaddy-zone-baseline.json
 RUNBOOK.md
 
