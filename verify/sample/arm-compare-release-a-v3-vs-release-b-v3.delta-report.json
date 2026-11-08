@@ -1,0 +1,136 @@
+{
+  "artifact_type": "delta-report",
+  "schema_version": "1.0",
+  "subject": "none",
+  "baseline": {
+    "pack_id": "evp:embodied:wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-release-a-v3:2026-11-08T17:44:56Z",
+    "canonical_sha256": "d0042da7628f47ad560a8076906c1fddf57f95f6e93f7738adf6144d79ea2fde",
+    "schema_version": "1.14",
+    "solver_class": null,
+    "platform_version": "certanix-beta@e9b999d5",
+    "ran_at": "2026-11-08T17:44:56Z",
+    "scenarios_executed": 8
+  },
+  "candidate": {
+    "pack_id": "evp:embodied:wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-release-b-v3:2026-11-08T17:46:25Z",
+    "canonical_sha256": "cb207c86c9c249a5a340c0a2a98149b9113c3736bf8ef7d024cfcd4f4d4fcbf8",
+    "schema_version": "1.14",
+    "solver_class": null,
+    "platform_version": "certanix-beta@e9b999d5",
+    "ran_at": "2026-11-08T17:46:25Z",
+    "scenarios_executed": 8
+  },
+  "battery": {
+    "scenario_ids": [
+      "aloha-transfer-cube-v1-s0-c021",
+      "aloha-transfer-cube-v1-s0-c027",
+      "aloha-transfer-cube-v1-s0-c000",
+      "aloha-transfer-cube-v1-s0-c011",
+      "aloha-transfer-cube-v1-s0-c020",
+      "aloha-transfer-cube-v1-s0-c031",
+      "aloha-transfer-cube-v1-s0-c023",
+      "aloha-transfer-cube-v1-s0-c034"
+    ],
+    "seeds": [
+      21,
+      27,
+      0,
+      11,
+      20,
+      31,
+      23,
+      34
+    ],
+    "scenarios_executed": 8,
+    "vehicle_model": null,
+    "frame_type": null
+  },
+  "schema_version_pair": [
+    "1.14",
+    "1.14"
+  ],
+  "solver_class_pair": [
+    null,
+    null
+  ],
+  "transitions": [
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c021",
+      "baseline_status": "failed",
+      "candidate_status": "failed",
+      "kind": "unchanged"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c027",
+      "baseline_status": "failed",
+      "candidate_status": "failed",
+      "kind": "unchanged"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c000",
+      "baseline_status": "passed",
+      "candidate_status": "passed",
+      "kind": "unchanged"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c011",
+      "baseline_status": "passed",
+      "candidate_status": "passed",
+      "kind": "unchanged"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c020",
+      "baseline_status": "passed",
+      "candidate_status": "failed",
+      "kind": "broken"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c031",
+      "baseline_status": "passed",
+      "candidate_status": "passed",
+      "kind": "unchanged"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c023",
+      "baseline_status": "passed",
+      "candidate_status": "passed",
+      "kind": "unchanged"
+    },
+    {
+      "scenario_id": "aloha-transfer-cube-v1-s0-c034",
+      "baseline_status": "failed",
+      "candidate_status": "passed",
+      "kind": "fixed"
+    }
+  ],
+  "counts": {
+    "fixed": 1,
+    "broken": 1,
+    "unchanged": 6,
+    "changed": 0
+  },
+  "pass_rate": {
+    "baseline_passed": 5,
+    "baseline_total": 8,
+    "candidate_passed": 5,
+    "candidate_total": 8,
+    "baseline_rate": 0.625,
+    "candidate_rate": 0.625,
+    "baseline_ci95": [
+      0.305738,
+      0.863158
+    ],
+    "candidate_ci95": [
+      0.305738,
+      0.863158
+    ],
+    "delta": 0.0
+  },
+  "generated_at": "2026-11-08T19:17:11Z",
+  "platform_version": "certanix-beta@fa9a3578",
+  "signature": {
+    "algorithm": "ECDSA-P256",
+    "key_source": "yubihsm-hardware",
+    "signature_b64": "eyJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZGV2LnNpZ3N0b3JlLmJ1bmRsZS52MC4zK2pzb24iLCJ2ZXJpZmljYXRpb25NYXRlcmlhbCI6eyJwdWJsaWNLZXkiOnsiaGludCI6IldFa0hkNFQ2WUdGdXFENkwvelhJc3BUaGRqR2tKRFhOSUJrdDBKMmZtdVU9In19LCJtZXNzYWdlU2lnbmF0dXJlIjp7Im1lc3NhZ2VEaWdlc3QiOnsiYWxnb3JpdGhtIjoiU0hBMl8yNTYiLCJkaWdlc3QiOiJYeGlHL096S1FIeXBGYWU1ZUY5NzdJeUROVnNJenNwOVNtc20zOFZudWc4PSJ9LCJzaWduYXR1cmUiOiJNRVlDSVFEWmtGOVhMSVlJaStVTUtnbHhlV1ZpNk5jejNJRFlNREp3MHU5OVg1Z0toQUloQU4zNGExMGFGTmZROHJibktmdTFqbTRWK24vYitCaXdBYVNEM3UwYXZWaG8ifX0="
+  }
+}
