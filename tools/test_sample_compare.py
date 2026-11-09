@@ -91,6 +91,8 @@ def test_the_delta_names_the_served_packs_and_the_dates_trace():
     assert from_delta["candidate"]["pack_id"] == b["id"]
     # July 2024 is in release B's signed derivation; March 2025 is release A's public
     # revision date (2025-03-06), recorded in certanix-beta docs/demo/arm-compare/CEREMONY.md.
+    # "published" makes the caption read it as that date, not a signed field (C.28).
+    assert "the current one, published March 2025" in _section_text()
     assert "published 2024-07-16" in b["provenance"]["policy"]["derivation"]
     assert a["provenance"]["policy"]["revision"].startswith("ba73b276")
 
