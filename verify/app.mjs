@@ -11,6 +11,9 @@
 // no verification decision of its own: the verdict shown is the verifier's JSON output.
 
 import { load, runCli } from "./engine.mjs";
+// Imported here, before the page closes the network: once the lockdown policy is in
+// place (script-src 'none'), no further module can load.
+import { deltaSummaryRows } from "./delta-summary.mjs";
 
 const $ = (id) => document.getElementById(id);
 const HSM_KEY_NAME = "certanix-hsm.pub";
@@ -610,6 +613,23 @@ function renderUnrelated(section, body) {
   body.append(box);
 }
 
+function renderDeltaSummary() {
+  let doc = null;
+  try {
+    doc = JSON.parse(new TextDecoder().decode(state.pack.bytes));
+  } catch {
+    return;
+  }
+  const rows = deltaSummaryRows(doc);
+  if (!rows) return;
+  const dl = el("dl");
+  for (const [label, value] of rows) dl.append(...termAndValue(label, value));
+  $("covers-title").textContent = "What this comparison records";
+  $("covers-about").hidden = true;
+  $("covers-body").append(el("p", "disclaimer", "Read from the signed fields of the delta report."), dl);
+  $("covers").hidden = false;
+}
+
 function renderCovers(parsed, covers, keyLabel) {
   const box = $("covers");
   const body = $("covers-body");
@@ -629,12 +649,16 @@ function renderCovers(parsed, covers, keyLabel) {
   }
   const verified = parsed && parsed.verified === true && covers.exitCode === 0;
   if (!out || typeof out !== "object") return;
+  $("covers-about").hidden = false;
   if (!verified || out.summary_status !== "shown" || !out.summary) {
     // Never anything from a pack that failed: the verifier's one line, and only that.
     if (typeof out.summary_note === "string") {
       note.textContent = out.summary_note;
       note.hidden = false;
     }
+    // A delta report the verifier passed (exit 0): its signed fields, read and labelled
+    // (public-demo plan C.12, C.13). Never for a file that did not verify.
+    if (verified) renderDeltaSummary();
     return;
   }
 

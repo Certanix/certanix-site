@@ -129,7 +129,7 @@ E839xBqZZ4gFulq1a2iCpfx6ygb1yCKxkMJgIBHXNeM7Ahz0QMfG4Ps/ew==
         <div class="strip" id="strip" hidden></div>
         <div class="covers" id="covers" hidden>
           <h3 id="covers-title"></h3>
-          <p class="covers-about">Regulation references in a pack are evidence, not a conformity assessment. <a href="https://schema.certanix.eu/references/regulation-clauses.html#about">About the regulation references</a></p>
+          <p class="covers-about" id="covers-about">Regulation references in a pack are evidence, not a conformity assessment. <a href="https://schema.certanix.eu/references/regulation-clauses.html#about">About the regulation references</a></p>
           <div id="covers-body"></div>
         </div>
         <h4 class="technical">Technical details</h4>
@@ -213,6 +213,25 @@ echo $?   <span class="c"># 0 = verified; any other value is the reason it did n
     <span class="label">SHA-256 of the file</span>
     <div class="mono" id="sample-sha256"></div>
     <p class="small">The earlier sample, the same campaign on pack schema 1.12 without regulation references, is still at <a href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8.evidence-pack.json" download>its original address</a> (SHA-256 5d605343ad74d6c64b5fca05ef7ff159be27260845d90ed190fdaf14c7d7d346).</p>
+  </section>
+
+  <!--
+    SECOND SAMPLE (public-demo plan WP2, C.20 to C.22): two releases of one open policy and
+    the signed delta report between them, signed on the YubiHSM by Axel on 2026-11-08. The
+    caption's numbers are read from the delta's signed fields (tools/test_sample_compare.py).
+  -->
+  <section id="sample-compare">
+    <h2>A second sample: two releases compared</h2>
+    <p>Two releases of an open research policy for the ALOHA robot arm (ACT, from LeRobot), run in MuJoCo simulation on the same eight scenarios: an earlier release of the same open policy, July 2024, against the current one, published March 2025. Release A is the current one, re-run under the same pins as release B. Each fails 3 of 8; c034 fixed, c020 broken, six unchanged. Open research model in simulation, not a customer system.</p>
+    <p>Download the three files, then verify each above or on the command line:</p>
+    <ul>
+      <li><a href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-release-a-v3.evidence-pack.json" download>Release A, the current release</a> (pack schema 1.14), SHA-256 <span class="mono">b07174dd7df7adc39c5b67d5af6db5d55761e950be3bf4ec1e650b719b855828</span></li>
+      <li><a href="sample/wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-release-b-v3.evidence-pack.json" download>Release B, July 2024</a> (pack schema 1.14), SHA-256 <span class="mono">3d2fcb750606ab5cf0d0ee7d6b45981d1bad6fca1954a8fee92cd4c91fdc4490</span></li>
+      <li><a href="sample/arm-compare-release-a-v3-vs-release-b-v3.delta-report.json" download>The delta report, A against B</a> (delta schema 1.0), SHA-256 <span class="mono">13d34bae0fa80f1b91509f269a8a44178f77e0d26dde23b342d8775e67bff6b2</span></li>
+    </ul>
+<pre>certanix-verify verify wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-release-a-v3.evidence-pack.json --key certanix-hsm.pub
+certanix-verify verify wp2-aloha-transfer-cube-v1-act-pergroup-s0-n40-k8-release-b-v3.evidence-pack.json --key certanix-hsm.pub
+certanix-verify verify arm-compare-release-a-v3-vs-release-b-v3.delta-report.json --standalone --key certanix-hsm.pub</pre>
   </section>
 
   <div class="registry bottom"></div>
