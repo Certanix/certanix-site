@@ -38,7 +38,7 @@ def test_the_requirements_pin_the_wheel_the_verify_page_runs():
     first = next(x for x in (_SITE / "try" / "requirements.txt").read_text("utf-8").splitlines() if not x.startswith("#"))
     bundle = json.loads((_SITE / "verify" / "runtime" / "verifier" / "bundle.json").read_text("utf-8"))
     wheel = next(w for w in bundle["wheels"] if w["file"].startswith("certanix_verify-"))
-    assert first == f"certanix-verify==0.17.0 --hash=sha256:{wheel['sha256']}"
+    assert first == f"certanix-verify==0.17.2 --hash=sha256:{wheel['sha256']}"
     assert "https://certanix.eu/try/requirements.txt" in _PAGE
 
 

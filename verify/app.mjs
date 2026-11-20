@@ -217,6 +217,7 @@ async function verify() {
     $("covers-note").hidden = true;
     $("strip").hidden = true;
     $("plain").hidden = true;
+    $("pack-summary").hidden = true;
     $("verdict").className = "verdict fail";
     $("verdict").textContent = "Could not run the verifier";
     $("detail").textContent = String(err && err.message ? err.message : err);
@@ -630,6 +631,43 @@ function renderDeltaSummary() {
   $("covers").hidden = false;
 }
 
+// The plain-language summary (certanix-verify 0.17.2): the verifier's sentences, written
+// from the signed fields, shown as text directly under the verdict with the verifier's own
+// label. Only reached on exit 0 with summary_status "shown"; a wheel without the field
+// (0.17.0 and earlier) shows nothing here. The page writes no sentence of its own.
+function hidePackSummary() {
+  $("stated-purpose").hidden = true;
+  $("stated-purpose-warning").hidden = true;
+  for (const id of ["stated-purpose-warning", "stated-purpose-text", "stated-purpose-label"]) $(id).textContent = "";
+  $("pack-summary").hidden = true;
+  $("pack-summary-text").textContent = "";
+  $("pack-summary-label").textContent = "";
+}
+
+// The stated purpose (pack schema 1.16, certanix-verify 0.17.2): the producer's words,
+// shown first and apart from the verifier's sentences, with the verifier's own label. A
+// purpose declared after the run shows the verifier's warning above it instead.
+function renderStatedPurpose(purpose) {
+  if (!purpose || typeof purpose.statement !== "string" || typeof purpose.label !== "string") return;
+  $("stated-purpose-text").textContent = `\u201c${purpose.statement}\u201d`;
+  if (purpose.state === "declared-after-run") {
+    $("stated-purpose-warning").textContent = purpose.label;
+    $("stated-purpose-warning").hidden = false;
+  } else {
+    $("stated-purpose-label").textContent = purpose.label;
+  }
+  $("stated-purpose").hidden = false;
+}
+
+function renderPackSummary(summary) {
+  renderStatedPurpose(summary.stated_purpose);
+  const sentences = Array.isArray(summary.plain) ? summary.plain.filter((s) => typeof s === "string") : [];
+  if (!sentences.length || typeof summary.plain_label !== "string") return;
+  $("pack-summary-text").textContent = sentences.join(" ");
+  $("pack-summary-label").textContent = summary.plain_label;
+  $("pack-summary").hidden = false;
+}
+
 function renderCovers(parsed, covers, keyLabel) {
   const box = $("covers");
   const body = $("covers-body");
@@ -640,6 +678,7 @@ function renderCovers(parsed, covers, keyLabel) {
   strip.hidden = true;
   strip.replaceChildren();
   body.replaceChildren();
+  hidePackSummary();
 
   let out = null;
   try {
@@ -662,6 +701,7 @@ function renderCovers(parsed, covers, keyLabel) {
     return;
   }
 
+  renderPackSummary(out.summary);
   const sections = (Array.isArray(out.summary.sections) ? out.summary.sections : []).filter(
     (s) => s && typeof s === "object",
   );

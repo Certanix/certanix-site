@@ -246,6 +246,14 @@ button:disabled{background:var(--button-off); color:var(--micro); cursor:not-all
 .verdict.test{color:var(--test)}
 .verdict .code{font-size:.5em; font-weight:600; color:var(--muted); letter-spacing:.02em; margin-left:10px; white-space:nowrap}
 .result .plain{margin:12px 0 0; font-size:clamp(19px,2.6vw,22px); line-height:1.45; color:var(--strong); font-weight:600}
+.stated-purpose{margin:14px 0 0; padding:14px 18px; border-left:3px solid var(--muted); background:var(--panel-2); max-width:none}
+.stated-purpose-text{margin:0; font-size:clamp(17px,2.2vw,19px); line-height:1.5; color:var(--strong); font-style:italic; max-width:80ch}
+.stated-purpose-label{margin:8px 0 0; font-size:14px; color:var(--muted); max-width:80ch}
+.stated-purpose-warning{margin:0 0 10px; font-size:16px; line-height:1.45; color:var(--strong); padding:10px 12px; border-left:3px solid var(--fail); max-width:80ch}
+.stated-purpose-label:empty{display:none}
+.pack-summary{margin:14px 0 0; padding:14px 18px; border-left:3px solid var(--pass); background:var(--panel-2); max-width:none}
+.pack-summary-text{margin:0; font-size:clamp(18px,2.4vw,20px); line-height:1.5; color:var(--strong); max-width:80ch}
+.pack-summary-label{margin:8px 0 0; font-size:14px; color:var(--muted)}
 .result .detail{margin-top:8px; color:var(--muted); font-size:16px}
 .covers-note{margin:14px 0 0; color:var(--strong); font-size:18px; padding:12px 16px; border-left:3px solid var(--fail); background:var(--panel-2); max-width:none}
 
