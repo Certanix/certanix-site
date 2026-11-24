@@ -1,10 +1,10 @@
 {
-  "certanix_verify_version": "0.17.2",
+  "certanix_verify_version": "0.22.0",
   "wheels": [
     {
-      "file": "certanix_verify-0.17.2-py3-none-any.whl",
-      "sha256": "2de2ec93094a0d97bc724c17d1ada032e6fd0cd0beec89811b867ff741d7b91a",
-      "integrity": "sha256-LeLskwlKDZe8ckwX0a2gMub9DNC+7ImBG4Z/90HXuRo="
+      "file": "certanix_verify-0.22.0-py3-none-any.whl",
+      "sha256": "983f0e763e363b38f09899f20a11f7f98b9166a23d38412b75c7c63af4940929",
+      "integrity": "sha256-mD8Odj42OzjwmJnyChH3+YuRZqI9OEErdcfGOvSUCSk="
     },
     {
       "file": "asn1crypto-1.5.1-py2.py3-none-any.whl",

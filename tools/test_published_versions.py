@@ -32,7 +32,10 @@ from pathlib import Path
 import pytest
 
 SITE = Path(__file__).resolve().parents[1]
-PUBLISHED = frozenset({"0.14.0", "0.15.0", "0.16.0", "0.16.1", "0.17.0", "0.17.2"})
+# 0.22.0: added as a prepared change, true only AFTER PUBLICATION (verify-pack-context S.5
+# step 7). This commit is pushed only once PyPI serves 0.22.0; before that the network check
+# below fails, as it should.
+PUBLISHED = frozenset({"0.14.0", "0.15.0", "0.16.0", "0.16.1", "0.17.0", "0.17.2", "0.22.0"})
 
 NAMED = re.compile(r"certanix[-_ ]verify(?:==|[ -]|\s+v)?(\d+\.\d+\.\d+(?:\+\w+)?)(?![\w.]*\d)", re.I)
 BARE = re.compile(r"(?<![\w.])(0\.\d+\.\d+(?:\+\w+)?)(?![\w.]*\d)")
